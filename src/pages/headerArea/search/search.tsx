@@ -1,12 +1,12 @@
 import React, {Component} from "react";
 import {Container, Typography, Box, Grid} from "@material-ui/core";
 
-function InfoArea(){
+function SearchArea(){
     return(
         <Box bgcolor="primary.main" style={{height: "100%"}}>
-            Info
+            Search
         </Box>
     )
 }
 
-export default InfoArea;
+export default SearchArea;

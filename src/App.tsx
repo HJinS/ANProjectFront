@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import HeaderArea from './pages/headerArea/header';
+import MainPage from './pages/mainPage';
 
 function App() {
   return (
-    <div className="App">
-      <HeaderArea />
+    <div className="App" >
+      <MainPage />
     </div>
   );
 }
