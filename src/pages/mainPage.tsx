@@ -5,24 +5,24 @@ import HeaderArea from "./headerArea/header";
 import MainSub from "./mainArea/main";
 
 const useStyles = makeStyles((theme)=> ({
-    container: {
-        //background: theme.palette.primary.dark,
-        height: 1080,
+    gridContainer:{
+        height: "100%",
     },
+
     gridHeader:{
-        height: "8%",
+        height: "6vh",
         background: theme.palette.common.black,
     },
     gridMain:{
-        height: "92%",
-        //background: theme.palette.common.white,
+        height: "94vh",
+        background: theme.palette.secondary.dark,
     },
 }));
 
 function MainPage(){
     const classes = useStyles();
     return(
-        <Grid container spacing={1} className={classes.container}>
+        <Grid container spacing={1} className= {classes.gridContainer}>
             <Grid item xl ={12} lg = {12} md = {12} sm = {12} xs = {12} className={classes.gridHeader}>
                 <HeaderArea/>
             </Grid>

@@ -1,12 +1,19 @@
+import { CssBaseline } from '@material-ui/core';
 import React from 'react';
 import './App.css';
 import MainPage from './pages/mainPage';
 
+
+
 function App() {
   return (
-    <div className="App" >
-      <MainPage />
-    </div>
+    <>
+      <CssBaseline/>
+      <div className="App" style={{height: "100vh", backgroundColor: "black"}}>
+        <MainPage />
+      </div>
+    </>
+    
   );
 }
 

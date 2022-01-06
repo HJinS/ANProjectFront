@@ -12,17 +12,14 @@ const useStyles = makeStyles((theme)=> ({
 function MainSub(){
     const classes = useStyles();
     return(
-        <Container maxWidth="xl" className={classes.container}>
-            <Grid container spacing={1}>
-                <Grid item xl ={3} lg = {3} md = {3} sm = {3} xs = {3}>
-                    mainLeft
-                </Grid>
-                <Grid item xl ={9} lg = {9} md = {9} sm = {9} xs = {9}>
-                    mainRight
-                </Grid>
+        <Grid container spacing={1} className={classes.container}>
+            <Grid item xl ={2} lg = {2} md = {2} sm = {2} xs = {2} style = {{backgroundColor:"green"}}>
+                mainLeft
             </Grid>
-        </Container>
-        
+            <Grid item xl ={9} lg = {9} md = {9} sm = {9} xs = {9}>
+                mainRight
+            </Grid>
+        </Grid>
     )
 }
 
