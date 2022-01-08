@@ -1,8 +1,9 @@
 import React, {Component} from "react";
-import {Container, Typography, Box, Grid} from "@material-ui/core";
+import {Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
-import HeaderArea from "./headerArea/header";
-import MainSub from "./mainArea/main";
+import HeaderArea from "../components/headerArea/header";
+import ProductItem from "../components/mainArea/main";
+import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles((theme)=> ({
     gridContainer:{
@@ -27,7 +28,10 @@ function MainPage(){
                 <HeaderArea/>
             </Grid>
             <Grid item xl ={12} lg = {12} md = {12} sm = {12} xs = {12} className={classes.gridMain}>
-                <MainSub/>
+                <Box sx={{marginLeft: '200px', marginTop: '400px'}}>
+                    <ProductItem/>    
+                </Box>
+                
             </Grid>
         </Grid>
         

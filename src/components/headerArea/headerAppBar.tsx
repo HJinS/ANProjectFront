@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import RenderMenu from './renderMenu';
-import RenderMobileMenu from './renderMobileMenu';
 import MyAppBar from './myAppBar';
 import MyDrawer from './myDrawer';
 const drawerWidth = 240;
@@ -12,7 +11,6 @@ export default function PrimarySearchAppBar() {
     React.useState<null | HTMLElement>(null);
 
   const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const [open, setOpen] = React.useState(false);
 
 
@@ -45,17 +43,13 @@ export default function PrimarySearchAppBar() {
   const mobileMenuId = 'primary-search-account-menu-mobile';
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1}}>
       <MyAppBar open={open} menuId={menuId} mobileMenuId={mobileMenuId}
       handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose}
       handleProfileMenuOpen={handleProfileMenuOpen} handleMobileMenuOpen={handleMobileMenuOpen}/>
 
       <MyDrawer open={open} menuId={menuId}
       drawerWidth={drawerWidth} handleDrawerClose={handleDrawerClose}/>
-      
-      <RenderMobileMenu mobileMenuId={mobileMenuId} isMenuOpen={isMenuOpen}
-      mobileMoreAnchorEl={mobileMoreAnchorEl} isMobileMenuOpen={isMobileMenuOpen}
-      handleProfileMenuOpen={handleProfileMenuOpen} handleMobileMenuClose={handleMobileMenuClose}/>
       
       <RenderMenu menuId={menuId} handleMenuClose={handleMenuClose}
       isMenuOpen={isMenuOpen} anchorEl={anchorEl}/>

@@ -1,12 +1,9 @@
 import React from "react";
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MoreIcon from '@mui/icons-material/MoreVert';
 import Search from './search/search';
 import SearchIconWrapper from './search/searchIcon';
 import StyledInputBase from './search/input';
@@ -48,17 +45,16 @@ function MyAppBar(props: ImyAppBar){
                 >
                     logo
                 </Typography>
-
-                <Search>
+                <Box sx={{ flexGrow: 1 }}/>
+                <Search style={{flexGrow: 0.35}}>
                     <SearchIconWrapper>
-                    <SearchIcon />
+                        <SearchIcon />
                     </SearchIconWrapper>
                     <StyledInputBase
                     placeholder="Search…"
-                    inputProps={{ 'aria-label': 'search' }}
+                    inputProps={{ 'aria-label': 'search'}}
                     />
                 </Search>
-                <Box sx={{ flexGrow: 1 }} />
                 <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                     <IconButton
                     size="large"
@@ -70,18 +66,6 @@ function MyAppBar(props: ImyAppBar){
                     color="inherit"
                     >
                         <AccountCircle />
-                    </IconButton>
-                </Box>
-                <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-                    <IconButton
-                    size="large"
-                    aria-label="show more"
-                    aria-controls={props.mobileMenuId}
-                    aria-haspopup="true"
-                    onClick={props.handleMobileMenuOpen}
-                    color="inherit"
-                    >
-                        <MoreIcon />
                     </IconButton>
                 </Box>
             </Toolbar>
