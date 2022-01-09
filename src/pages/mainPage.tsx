@@ -2,7 +2,8 @@ import React, {Component} from "react";
 import {Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import HeaderArea from "../components/headerArea/header";
-import ProductItem from "../components/mainArea/main";
+import ProductItem from "../components/mainArea/productItem";
+import Main from "../components/mainArea/main";
 import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles((theme)=> ({
@@ -29,7 +30,7 @@ function MainPage(){
             </Grid>
             <Grid item xl ={12} lg = {12} md = {12} sm = {12} xs = {12} className={classes.gridMain}>
                 <Box sx={{marginLeft: '200px', marginTop: '400px'}}>
-                    <ProductItem/>    
+                    <Main/>  
                 </Box>
                 
             </Grid>
