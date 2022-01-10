@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme)=> ({
     },
     gridMain:{
         height: "94vh",
-        background: theme.palette.secondary.dark,
+        // background: theme.palette.secondary.dark,
     },
 }));
 
@@ -29,10 +29,7 @@ function MainPage(){
                 <HeaderArea/>
             </Grid>
             <Grid item xl ={12} lg = {12} md = {12} sm = {12} xs = {12} className={classes.gridMain}>
-                <Box sx={{marginLeft: '200px', marginTop: '400px'}}>
-                    <Main/>  
-                </Box>
-                
+                <Main/>  
             </Grid>
         </Grid>
         

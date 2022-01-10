@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <CssBaseline/>
-      <div className="App" style={{height: "100vh", backgroundColor: "black"}}>
+      <div className="App" style={{height: "100vh"}}>
         <MainPage />
       </div>
     </>

@@ -6,9 +6,9 @@ import Typography from '@mui/material/Typography';
 
 function ProductItem() {
     return (
-      <Card sx={{ width: '30vw', display:'flex', flexDirection: 'row' }}>
+      <Card sx={{ width: '25vw', display:'flex', flexDirection: 'row', borderRadius: 2}}>
           <CardMedia style={{backgroundColor: 'red', justifyContent:'flex-start',
-                              width: '10vw', height: '20vh'}}
+                              width: '8vw', height: '20vh'}}
           component="img"
           image="/static/images/cards/contemplative-reptile.jpg"
           />
