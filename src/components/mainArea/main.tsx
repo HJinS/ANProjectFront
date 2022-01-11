@@ -2,7 +2,8 @@ import React, {Component} from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import ProductItem from "./productItem";
-import { Box } from "@mui/material";
+import product from "../../testDB/product.json";
+import { Grid } from "@mui/material";
 
 const responsive = {
   largeDesktop: {
@@ -13,7 +14,7 @@ const responsive = {
   },
   desktop: {
     breakpoint: {max: 3000, min: 1440},
-    items: 2,  
+    items: 4,  
     partialVisibilityGutter: 100,
   },
   tablet: {
@@ -30,28 +31,62 @@ const responsive = {
 
 function Main(){
   return(
-    <>
-    <Carousel
-    responsive={responsive}
-    swipeable={false}
-    draggable={false}
-    showDots={false}
-    containerClass="react-multi-carousel-list"
-    removeArrowOnDeviceType={["tablet", "mobile"]}
-    dotListClass="custom-dot-list-style"
-    renderButtonGroupOutside={true}
-    renderDotsOutside={true}>
-      <ProductItem/>
-      <ProductItem/>
-      <ProductItem/>
-      <ProductItem/>
-      <ProductItem/>
-      <ProductItem/>
-      <ProductItem/>
-      <ProductItem/>
-      <ProductItem/>
-    </Carousel>
-    </>
+    <Grid container rowSpacing={20}>
+      <Grid item xl={12}>
+        <Carousel
+        responsive={responsive}
+        swipeable={false}
+        draggable={false}
+        showDots={false}
+        containerClass="react-multi-carousel-list"
+        removeArrowOnDeviceType={["tablet", "mobile"]}
+        dotListClass="custom-dot-list-style"
+        renderButtonGroupOutside={true}
+        renderDotsOutside={true}>
+          {
+            product.products.map(product_item => (
+              <ProductItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.catgegory} site={product_item.site}/>
+            ))
+          }
+        </Carousel>
+      </Grid>
+      <Grid item xl={12}>
+        <Carousel
+        responsive={responsive}
+        swipeable={false}
+        draggable={false}
+        showDots={false}
+        containerClass="react-multi-carousel-list"
+        removeArrowOnDeviceType={["tablet", "mobile"]}
+        dotListClass="custom-dot-list-style"
+        renderButtonGroupOutside={true}
+        renderDotsOutside={true}>
+          {
+            product.products.map(product_item => (
+              <ProductItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.catgegory} site={product_item.site}/>
+            ))
+          }
+        </Carousel>
+      </Grid>
+      <Grid item xl={12}>
+        <Carousel
+        responsive={responsive}
+        swipeable={false}
+        draggable={false}
+        showDots={false}
+        containerClass="react-multi-carousel-list"
+        removeArrowOnDeviceType={["tablet", "mobile"]}
+        dotListClass="custom-dot-list-style"
+        renderButtonGroupOutside={true}
+        renderDotsOutside={true}>
+          {
+            product.products.map(product_item => (
+              <ProductItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.catgegory} site={product_item.site}/>
+            ))
+          }
+        </Carousel>
+      </Grid>
+    </Grid>
     
   );
 }

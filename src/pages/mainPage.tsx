@@ -2,9 +2,7 @@ import React, {Component} from "react";
 import {Grid} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import HeaderArea from "../components/headerArea/header";
-import ProductItem from "../components/mainArea/productItem";
 import Main from "../components/mainArea/main";
-import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles((theme)=> ({
     gridContainer:{
@@ -13,11 +11,9 @@ const useStyles = makeStyles((theme)=> ({
 
     gridHeader:{
         height: "6vh",
-        background: theme.palette.common.black,
     },
     gridMain:{
         height: "94vh",
-        // background: theme.palette.secondary.dark,
     },
 }));
 

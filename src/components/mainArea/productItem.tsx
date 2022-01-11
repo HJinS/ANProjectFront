@@ -4,21 +4,28 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
-function ProductItem() {
+interface productData{
+    name: string,
+    price: string,
+    img_src: string,
+    category: string,
+    site: number,
+}
+
+function ProductItem(props: productData) {
     return (
       <Card sx={{ width: '25vw', display:'flex', flexDirection: 'row', borderRadius: 2}}>
           <CardMedia style={{backgroundColor: 'red', justifyContent:'flex-start',
                               width: '8vw', height: '20vh'}}
           component="img"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image={props.img_src}
           />
           <CardContent style={{justifyContent:'flex-end'}}>
-              <Typography gutterBottom variant="h5" component="div">
-                  Lizard
-              </Typography>
               <Typography variant="body2" color="text.secondary">
-                  Lizards are a widespread group of squamate reptiles, with over 6,000
-                  species, ranging across all continents except Antarctica
+                  {props.name}
+              </Typography>
+              <Typography gutterBottom variant="h5" component="div">
+                  {props.price}
               </Typography>
           </CardContent>
       </Card>
