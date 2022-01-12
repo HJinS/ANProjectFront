@@ -4,6 +4,7 @@ import 'react-multi-carousel/lib/styles.css';
 import ProductItem from "./productItem";
 import product from "../../testDB/product.json";
 import { Grid } from "@mui/material";
+import MyMore from "./myMoreIcon";
 
 const responsive = {
   largeDesktop: {
@@ -31,8 +32,9 @@ const responsive = {
 
 function Main(){
   return(
-    <Grid container rowSpacing={20}>
+    <Grid container rowSpacing={14} sx={{height: "100%", paddingTop: "2%"}}>
       <Grid item xl={12}>
+        <MyMore sx={{}}/>
         <Carousel
         responsive={responsive}
         swipeable={false}
