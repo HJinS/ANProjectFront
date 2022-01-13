@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import MyStar from './myStar';
 import { BorderAllSharp } from "@mui/icons-material";
+import './typoCSS.css';
 
 interface productData{
     name: string,
@@ -15,34 +16,30 @@ interface productData{
     site: number,
 }
 
-function ProductItem(props: productData) {
+function ProductListlItem(props: productData) {
     return (
-      <Card sx={{ width: '25vw', display:'flex', flexDirection: 'row', borderRadius: 2}}>
+      <Card sx={{ width: '300px', height: '500px', display:'flex', flexDirection: 'column', borderRadius: 2}}>
           <CardMedia style={{backgroundColor: 'red', justifyContent:'flex-start',
-                              width: '8vw', height: '23vh'}}
-          component="img"
-          image={props.img_src}
-          />
+                              width: '100%', height: '23vh'}} component="img" image={props.img_src}/>
           <CardContent style={{justifyContent:'flex-end'}}>
               <Box sx={{paddingTop: "5%"}}/>
-              <Typography variant="body1" color="text.secondary" align='left' sx={{height: "40%"}}>
+              <Typography variant="body1" color="text.secondary" className={"MuiTypography-body1"}>
                   {props.name}
               </Typography>
               <Box sx={{height: "15%"}}/>
               <Box>
-                <Typography gutterBottom variant="body2" component="div" align='left' marginBottom="3%">
+                <Typography gutterBottom variant="body2" component="div" className={"MuiTypography-body2"}>
                     {props.category}
                 </Typography>
-                <Typography gutterBottom variant="h5" component="div" align='left'>
+                <Typography gutterBottom variant="h5" component="div" className={"MuiTypography-h5"}>
                     {props.price}
-                    <MyStar on={false} sx={{marginBottom: "8px", marginLeft: "5px", color: "#1976D2"}}/>
+                    <MyStar on={false}/>
                 </Typography>
                 
               </Box>
-              
           </CardContent>
       </Card>
     );
   }
   
-  export default ProductItem;
+  export default ProductListlItem;

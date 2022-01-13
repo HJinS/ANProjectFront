@@ -1,0 +1,9 @@
+.MainGridContainer{
+    height: 100%;
+}
+.MainGridHeader{
+    height: 6vh;
+}
+.MainGridMain{
+    height: 94vh;
+}

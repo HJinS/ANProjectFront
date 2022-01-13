@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import ProductItem from "./productItem";
+import ProductCarouselItem from "./productCarouselItem";
 import product from "../../testDB/product.json";
-import { Grid } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 import MyMore from "./myMoreIcon";
 
 const responsive = {
@@ -14,12 +14,12 @@ const responsive = {
     partialVisibilityGutter: 100,
   },
   desktop: {
-    breakpoint: {max: 3000, min: 1440},
+    breakpoint: {max: 3000, min: 1080},
     items: 4,  
     partialVisibilityGutter: 100,
   },
   tablet: {
-    breakpoint: {max: 1440, min: 464},
+    breakpoint: {max: 1080, min: 464},
     items: 2,
     partialVisibilityGutter: 100,
   },
@@ -30,11 +30,14 @@ const responsive = {
   }
 }
 
-function Main(){
+function ProductCarousel(){
   return(
-    <Grid container rowSpacing={14} sx={{height: "100%", paddingTop: "2%"}}>
+    <Grid container rowSpacing={9} sx={{height: "100%", paddingTop: "2%"}}>
       <Grid item xl={12}>
-        <MyMore sx={{}}/>
+        <Box sx={{width: "100%", display: "flex", flexDirection: "row"}}>
+          <Box sx={{justifyContent: "flex-start", width:"98%"}}/>
+          <MyMore sx={{justifyContent: "flex-end"}}/>
+        </Box>
         <Carousel
         responsive={responsive}
         swipeable={false}
@@ -47,12 +50,16 @@ function Main(){
         renderDotsOutside={true}>
           {
             product.products.map(product_item => (
-              <ProductItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.catgegory} site={product_item.site}/>
+              <ProductCarouselItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.catgegory} site={product_item.site}/>
             ))
           }
         </Carousel>
       </Grid>
       <Grid item xl={12}>
+        <Box sx={{width: "100%", display: "flex", flexDirection: "row"}}>
+          <Box sx={{justifyContent: "flex-start", width:"98%"}}/>
+          <MyMore sx={{justifyContent: "flex-end"}}/>
+        </Box>
         <Carousel
         responsive={responsive}
         swipeable={false}
@@ -65,12 +72,16 @@ function Main(){
         renderDotsOutside={true}>
           {
             product.products.map(product_item => (
-              <ProductItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.catgegory} site={product_item.site}/>
+              <ProductCarouselItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.catgegory} site={product_item.site}/>
             ))
           }
         </Carousel>
       </Grid>
       <Grid item xl={12}>
+        <Box sx={{width: "100%", display: "flex", flexDirection: "row"}}>
+          <Box sx={{justifyContent: "flex-start", width:"98%"}}/>
+          <MyMore sx={{justifyContent: "flex-end"}}/>
+        </Box>
         <Carousel
         responsive={responsive}
         swipeable={false}
@@ -83,7 +94,7 @@ function Main(){
         renderDotsOutside={true}>
           {
             product.products.map(product_item => (
-              <ProductItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.catgegory} site={product_item.site}/>
+              <ProductCarouselItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.catgegory} site={product_item.site}/>
             ))
           }
         </Carousel>
@@ -93,4 +104,4 @@ function Main(){
   );
 }
 
-export default Main;
+export default ProductCarousel;

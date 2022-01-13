@@ -1,22 +1,20 @@
 import React, {Component} from "react";
-import {Grid} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
+import {Grid, Box} from "@material-ui/core";
 import HeaderArea from "../components/headerArea/header";
-import ProductCarousel from "../components/mainArea/productCarousel";
 import './mainPage.css'
+import ProductList from "../components/mainArea/ProductList";
 
-function MainPage(){
+function MainListPage(){
     return(
         <Grid container spacing={1} className= {"MainGridContainer"}>
             <Grid item xl ={12} lg = {12} md = {12} sm = {12} xs = {12} className={"MainGridHeader"}>
                 <HeaderArea/>
             </Grid>
             <Grid item xl ={12} lg = {12} md = {12} sm = {12} xs = {12} className={"MainGridMain"}>
-                <ProductCarousel/>  
+                <ProductList/>
             </Grid>
         </Grid>
-        
     )
 }
 
-export default MainPage;
+export default MainListPage;

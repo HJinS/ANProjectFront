@@ -1,0 +1,25 @@
+.MuiTypography-body1{
+    text-align: left;
+    height: 30%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+}
+.MuiTypography-body2{
+    text-align: left;
+    margin-bottom: 3%;
+}
+.MuiTypography-h5{
+    text-align: left;
+}
+.MyCustomButton:hover{
+    background-color: inherit !important;
+}
+.MyStarIcon{
+    margin-bottom: 8px;
+    margin-left: 5px;
+    color: #1976D2;
+}

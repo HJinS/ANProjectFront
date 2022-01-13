@@ -3,6 +3,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import { SxProps, Theme } from "@mui/material";
 import IconButton from'@mui/material/IconButton';
+import './typoCSS.css';
 
 interface starInfo{
    sx?: SxProps,
@@ -11,8 +12,8 @@ interface starInfo{
 
 function MyStar(props: starInfo) {
     return (
-        <IconButton >
-            {props.on ? <StarRateIcon sx={props.sx}/> : <StarBorderIcon sx={props.sx}/>}
+        <IconButton className={"MyCustomButton"}>
+            {props.on ? <StarRateIcon className={"MyStarIcon"}/> : <StarBorderIcon className={"MyStarIcon"}/>}
         </IconButton>
     );
   }
