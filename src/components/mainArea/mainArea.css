@@ -23,3 +23,13 @@
     margin-left: 5px;
     color: #1976D2;
 }
+.ProductListStyle{
+    width: 100%;
+}
+.ListMainAreaStyle{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    
+}

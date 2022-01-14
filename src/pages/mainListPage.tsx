@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Grid, Box} from "@material-ui/core";
 import HeaderArea from "../components/headerArea/header";
 import './mainPage.css'
-import ProductList from "../components/mainArea/ProductList";
+import ListMainArea from "../components/mainArea/listMainArea";
 
 function MainListPage(){
     return(
@@ -11,7 +11,7 @@ function MainListPage(){
                 <HeaderArea/>
             </Grid>
             <Grid item xl ={12} lg = {12} md = {12} sm = {12} xs = {12} className={"MainGridMain"}>
-                <ProductList/>
+                <ListMainArea/>
             </Grid>
         </Grid>
     )

@@ -50,7 +50,7 @@ function ProductCarousel(){
         renderDotsOutside={true}>
           {
             product.products.map(product_item => (
-              <ProductCarouselItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.catgegory} site={product_item.site}/>
+              <ProductCarouselItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.category} site={product_item.site}/>
             ))
           }
         </Carousel>
@@ -72,7 +72,7 @@ function ProductCarousel(){
         renderDotsOutside={true}>
           {
             product.products.map(product_item => (
-              <ProductCarouselItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.catgegory} site={product_item.site}/>
+              <ProductCarouselItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.category} site={product_item.site}/>
             ))
           }
         </Carousel>
@@ -94,7 +94,7 @@ function ProductCarousel(){
         renderDotsOutside={true}>
           {
             product.products.map(product_item => (
-              <ProductCarouselItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.catgegory} site={product_item.site}/>
+              <ProductCarouselItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.category} site={product_item.site}/>
             ))
           }
         </Carousel>

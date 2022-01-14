@@ -5,8 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import MyStar from './myStar';
-import './typoCSS.css';
-import { BorderAllSharp } from "@mui/icons-material";
+import './mainArea.css';
 
 interface productData{
     name: string,

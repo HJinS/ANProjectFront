@@ -5,8 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import MyStar from './myStar';
-import { BorderAllSharp } from "@mui/icons-material";
-import './typoCSS.css';
+import './mainArea.css';
 
 interface productData{
     name: string,
@@ -16,9 +15,9 @@ interface productData{
     site: number,
 }
 
-function ProductListlItem(props: productData) {
+function ProductListItem(props: productData) {
     return (
-      <Card sx={{ width: '300px', height: '500px', display:'flex', flexDirection: 'column', borderRadius: 2}}>
+      <Card sx={{ width: '280px', height: '500px', display:'flex', flexDirection: 'column', borderRadius: 2}}>
           <CardMedia style={{backgroundColor: 'red', justifyContent:'flex-start',
                               width: '100%', height: '23vh'}} component="img" image={props.img_src}/>
           <CardContent style={{justifyContent:'flex-end'}}>
@@ -42,4 +41,4 @@ function ProductListlItem(props: productData) {
     );
   }
   
-  export default ProductListlItem;
+  export default ProductListItem;
