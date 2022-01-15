@@ -33,3 +33,31 @@
     justify-content: center;
     
 }
+.PaginationStyle{
+    display: flex;
+    justify-content: center;
+    padding-left: 28%;
+}
+.FloatingMenuOuterBoxStyle{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.FloatingMenuStyle{
+    position: fixed;
+    width: 20%;
+    height: 780px;
+    top: 320px;
+    display: flex;
+    flex-direction: column;
+}
+.ButtonStyle{
+    background-color: black;
+    border-color: black;
+    border-radius: 4;
+}
+.ButtonStyle:hover{
+    background-color: inherit !important;
+}
