@@ -47,16 +47,21 @@
 }
 .FloatingMenuStyle{
     position: fixed;
-    width: 20%;
+    width: 11%;
     height: 780px;
     top: 320px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
 }
-.ButtonStyle{
-    background-color: black;
+.ButtonStyle.MuiButton-root{
+    width:fit-content;
+    border-radius: 5px;
     border-color: black;
-    border-radius: 4;
+    height: 40px;
+    margin-left: 10px;
+    background-color: white;
 }
 .ButtonStyle:hover{
     background-color: inherit !important;
