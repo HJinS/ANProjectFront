@@ -8,7 +8,7 @@ function ProductList() {
     return (
       <ImageList cols={3} rowHeight={500} className={"ProductListStyle"}>
         {product.products.map((productItem) => (
-          <ProductListItem name={productItem.name} price={productItem.price} img_src={productItem.img_src}
+          <ProductListItem key={productItem.product_id} name={productItem.name} price={productItem.price} img_src={productItem.img_src}
           category={productItem.category} site={productItem.site} />
         ))}
       </ImageList>

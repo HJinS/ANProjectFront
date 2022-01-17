@@ -16,24 +16,24 @@ function FloatingMenu() {
                     "liquid cpu cooler",
                     "air cpu cooler"]
     return (
-        <Accordion>
+        <Accordion className="AccordionStyle" square={true}>
             <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header">
-                {"tmp"}
-                <AccordionDetails>
-                    <Box className={"FloatingMenuStyle"}>
-                        {category.map(categoryItem => (
-                            <Button className="ButtonStyle" variant="contained" color="inherit">
-                                <Typography variant="body2" color="text.secondary">
-                                    {categoryItem}
-                                </Typography>
-                            </Button>
-                        ))}
-                    </Box>
-                </AccordionDetails>
+                {"PC 부품"}
             </AccordionSummary>
+            <AccordionDetails>
+                <Box className={"FloatingMenuStyle"}>
+                    {category.map((categoryItem, index) => (
+                        <Button key={index} className="ButtonStyle" variant="contained" color="inherit">
+                            <Typography variant="body2" color="text.secondary">
+                                {categoryItem}
+                            </Typography>
+                        </Button>
+                    ))}
+                </Box>
+            </AccordionDetails>
         </Accordion>
     );
   }
