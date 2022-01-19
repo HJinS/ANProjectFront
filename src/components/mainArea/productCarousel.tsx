@@ -5,6 +5,7 @@ import ProductCarouselItem from "./productCarouselItem";
 import product from "../../testDB/product.json";
 import { Grid, Box } from "@mui/material";
 import MyMore from "./myMoreIcon";
+import {Link} from "react-router-dom";
 
 const responsive = {
   largeDesktop: {
@@ -32,11 +33,13 @@ const responsive = {
 
 function ProductCarousel(){
   return(
-    <Grid container rowSpacing={9} sx={{height: "100%", paddingTop: "2%"}}>
+    <Grid container rowSpacing={9} sx={{height: "100%", paddingTop: "4%"}}>
       <Grid item xl={12}>
         <Box sx={{width: "100%", display: "flex", flexDirection: "row"}}>
           <Box sx={{justifyContent: "flex-start", width:"98%"}}/>
-          <MyMore sx={{justifyContent: "flex-end"}}/>
+          <Link to='list'>
+            <MyMore sx={{justifyContent: "flex-end"}}/>
+          </Link>
         </Box>
         <Carousel
         responsive={responsive}
@@ -58,7 +61,9 @@ function ProductCarousel(){
       <Grid item xl={12}>
         <Box sx={{width: "100%", display: "flex", flexDirection: "row"}}>
           <Box sx={{justifyContent: "flex-start", width:"98%"}}/>
-          <MyMore sx={{justifyContent: "flex-end"}}/>
+          <Link to='list'>
+            <MyMore sx={{justifyContent: "flex-end"}}/>
+          </Link>
         </Box>
         <Carousel
         responsive={responsive}
@@ -80,7 +85,9 @@ function ProductCarousel(){
       <Grid item xl={12}>
         <Box sx={{width: "100%", display: "flex", flexDirection: "row"}}>
           <Box sx={{justifyContent: "flex-start", width:"98%"}}/>
-          <MyMore sx={{justifyContent: "flex-end"}}/>
+          <Link to='list'>
+            <MyMore sx={{justifyContent: "flex-end"}}/>
+          </Link>
         </Box>
         <Carousel
         responsive={responsive}
