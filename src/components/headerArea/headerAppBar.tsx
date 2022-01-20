@@ -46,7 +46,7 @@ export default function PrimarySearchAppBar() {
     <Box sx={{ flexGrow: 1}}>
       <MyAppBar open={open} menuId={menuId} mobileMenuId={mobileMenuId}
       handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose}
-      handleProfileMenuOpen={handleProfileMenuOpen} handleMobileMenuOpen={handleMobileMenuOpen}/>
+      handleMobileMenuOpen={handleMobileMenuOpen}/>
 
       <MyDrawer open={open} menuId={menuId}
       drawerWidth={drawerWidth} handleDrawerClose={handleDrawerClose}/>

@@ -1,0 +1,5 @@
+.LoginButtonStyle.MuiButton-root{
+    width: fit-content;
+    box-shadow: none;
+    background-color: transparent;
+}
