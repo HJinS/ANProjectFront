@@ -7,9 +7,10 @@ const JWT_EXPIRY_TIME = 24 * 3600 * 1000;
 
 function requestLogin(){
     console.log("Login Button Clicked")
+
     axios.get('/api/social/google/login')
         .then(onLoginSuccess).catch(error => {
-            console.log(error.response.data)
+            console.log(error.response)
         })
 }
 

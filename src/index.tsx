@@ -9,7 +9,6 @@ import { Provider } from 'react-redux';
 
 const store = createStore(rootReducer);
 
-//axios.defaults.baseURL = "http://localhost:8000";
 axios.defaults.withCredentials = true;
 
 ReactDOM.render(
