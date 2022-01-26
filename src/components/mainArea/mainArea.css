@@ -1,6 +1,6 @@
 .MuiTypography-body1{
     text-align: left;
-    height: 30%;
+    height: 28%;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -75,4 +75,19 @@
 }
 .ButtonStyle:hover{
     background-color: inherit !important;
+}
+.DetailMainStyle{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+}
+.DetailmMainGridStyle{
+    height: 70%;
+    width: 50%;
+}
+.CarouselStyle{
+    padding-bottom: 2px;
+    padding-top: 2px;
 }

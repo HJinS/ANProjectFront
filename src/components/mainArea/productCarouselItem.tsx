@@ -17,13 +17,10 @@ interface productData{
 
 function ProductCarouselItem(props: productData) {
     return (
-        <Card sx={{ width: '25vw', display:'flex', flexDirection: 'row', borderRadius: 2}}>
-            <CardMedia style={{backgroundColor: 'red', justifyContent:'flex-start',
-                                width: '8vw', height: '23vh'}}
-            component="img"
-            image={props.img_src}
-            />
-            <CardContent style={{justifyContent:'flex-end'}}>
+        <Card sx={{ width: '638px', height: '285px', display:'flex', flexDirection: 'row', borderRadius: 3}}>
+            <CardMedia style={{justifyContent:'flex-start', width: '180px', height: '100%'}}
+            component="img" image={props.img_src}/>
+            <CardContent style={{justifyContent:'flex-end', height: '100%'}}>
                 <Box sx={{paddingTop: "5%"}}/>
                 <Typography variant="body1" color="text.secondary" className={"MuiTypography-body1"} >
                     {props.name}

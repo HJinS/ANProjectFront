@@ -6,6 +6,7 @@ import product from "../../testDB/product.json";
 import { Grid, Box } from "@mui/material";
 import MyMore from "./myMoreIcon";
 import {Link} from "react-router-dom";
+import './mainArea.css';
 
 const responsive = {
   largeDesktop: {
@@ -42,6 +43,31 @@ function ProductCarousel(){
           </Link>
         </Box>
         <Carousel
+        className={"CarouselStyle"}
+        responsive={responsive}
+        swipeable={false}
+        draggable={false}
+        showDots={false}
+        containerClass="react-multi-carousel-list"
+        dotListClass="custom-dot-list-style"
+        renderButtonGroupOutside={true}
+        renderDotsOutside={true}>
+          {
+            product.products.map(product_item => (
+              <ProductCarouselItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.category} site={product_item.site}/>
+            ))
+          }
+        </Carousel>
+      </Grid>
+      <Grid item xl={12}>
+        <Box sx={{width: "100%", display: "flex", flexDirection: "row"}}>
+          <Box sx={{justifyContent: "flex-start", width:"98%"}}/>
+          <Link to='list'>
+            <MyMore sx={{justifyContent: "flex-end"}}/>
+          </Link>
+        </Box>
+        <Carousel
+        className={"CarouselStyle"}
         responsive={responsive}
         swipeable={false}
         draggable={false}
@@ -66,30 +92,7 @@ function ProductCarousel(){
           </Link>
         </Box>
         <Carousel
-        responsive={responsive}
-        swipeable={false}
-        draggable={false}
-        showDots={false}
-        containerClass="react-multi-carousel-list"
-        removeArrowOnDeviceType={["tablet", "mobile"]}
-        dotListClass="custom-dot-list-style"
-        renderButtonGroupOutside={true}
-        renderDotsOutside={true}>
-          {
-            product.products.map(product_item => (
-              <ProductCarouselItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.category} site={product_item.site}/>
-            ))
-          }
-        </Carousel>
-      </Grid>
-      <Grid item xl={12}>
-        <Box sx={{width: "100%", display: "flex", flexDirection: "row"}}>
-          <Box sx={{justifyContent: "flex-start", width:"98%"}}/>
-          <Link to='list'>
-            <MyMore sx={{justifyContent: "flex-end"}}/>
-          </Link>
-        </Box>
-        <Carousel
+        className={"CarouselStyle"}
         responsive={responsive}
         swipeable={false}
         draggable={false}

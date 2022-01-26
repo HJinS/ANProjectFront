@@ -43,7 +43,7 @@ export default function PrimarySearchAppBar() {
   const mobileMenuId = 'primary-search-account-menu-mobile';
 
   return (
-    <Box sx={{ flexGrow: 1}}>
+    <Box>
       <MyAppBar open={open} menuId={menuId} mobileMenuId={mobileMenuId}
       handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose}
       handleMobileMenuOpen={handleMobileMenuOpen}/>
