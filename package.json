@@ -55,5 +55,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.1",
+    "@types/jsonwebtoken": "^8.5.8"
   }
 }

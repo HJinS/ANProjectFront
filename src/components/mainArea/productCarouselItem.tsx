@@ -9,10 +9,11 @@ import './mainArea.css';
 
 interface productData{
     name: string,
-    price: string,
+    price: number,
     img_src: string,
     category: string,
     site: number,
+    like?: boolean
 }
 
 function ProductCarouselItem(props: productData) {
@@ -32,7 +33,8 @@ function ProductCarouselItem(props: productData) {
                     </Typography>
                     <Typography gutterBottom variant="h5" component="div" align='left'>
                         {props.price}
-                        <MyStar on={false} sx={{marginBottom: "8px", marginLeft: "5px", color: "#1976D2"}}/>
+                        {props.like===undefined ? null : <MyStar on={props.like} sx={{marginBottom: "8px", marginLeft: "5px", color: "#1976D2"}}/>}
+                        
                     </Typography>
                 </Box>
             </CardContent>

@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, useEffect, useState} from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import ProductCarouselItem from "./productCarouselItem";
@@ -7,6 +7,9 @@ import { Grid, Box } from "@mui/material";
 import MyMore from "./myMoreIcon";
 import {Link} from "react-router-dom";
 import './mainArea.css';
+import axios, { AxiosResponse } from "axios";
+import { CloseOutlined } from "@mui/icons-material";
+import ProductInterface from "../interfaces/productInterface";
 
 const responsive = {
   largeDesktop: {
@@ -32,7 +35,16 @@ const responsive = {
   }
 }
 
+function axiosMainResponse(this: any, response: AxiosResponse){
+  if(response.status != 200){
+    console.log("Error status = ", response.status)
+  }
+  this.setAmazonData(response.data)
+  console.log(response.data, "data loaded")
+}
+
 function ProductCarousel(){
+  const [amazonData, setAmazonData] = useState<[ProductInterface]>();
   return(
     <Grid container rowSpacing={9} sx={{height: "100%", paddingTop: "4%"}}>
       <Grid item xl={12}>
@@ -53,8 +65,16 @@ function ProductCarousel(){
         renderButtonGroupOutside={true}
         renderDotsOutside={true}>
           {
-            product.products.map(product_item => (
-              <ProductCarouselItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.category} site={product_item.site}/>
+            useEffect(()=>{
+                axios.get('/api/product/main/amazon').
+                then(axiosMainResponse).catch(error => {
+                console.log(error.response)
+              })
+            })
+          }
+          { 
+            amazonData!.map(data => (
+              <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site}/>
             ))
           }
         </Carousel>

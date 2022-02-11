@@ -9,7 +9,7 @@ import './mainArea.css';
 
 interface productData{
     name: string,
-    price: string,
+    price: number,
     img_src: string,
     category: string,
     site: number,
