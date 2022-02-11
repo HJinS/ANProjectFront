@@ -1,14 +1,14 @@
 import React, {Component} from "react";
 import { Grid, Box } from "@mui/material";
-import './mainArea.css'
-import ProductList from './productList';
+import './mainArea.css';
 import MyPagination from './myPagination';
 import FloatingMenu from "./floatingMenu";
+import ProductList from "./ProductList";
 
 function ListMainArea() {
     return (
         <Box className={"ListMainAreaStyle"}>
-            <Box sx={{width: "65%"}}>
+            <Box sx={{width: "68%"}}>
                 <Grid container>
                     <Grid item xs={4}>
                         <Box className={"FloatingMenuOuterBoxStyle"}>
