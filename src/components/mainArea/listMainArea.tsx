@@ -3,7 +3,7 @@ import { Grid, Box } from "@mui/material";
 import './mainArea.css';
 import MyPagination from './myPagination';
 import FloatingMenu from "./floatingMenu";
-import ProductList from "./ProductList";
+import ProductList from "./productList";
 
 function ListMainArea() {
     return (

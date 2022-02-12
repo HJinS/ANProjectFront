@@ -10,6 +10,8 @@ import './mainArea.css';
 import axios, { AxiosResponse } from "axios";
 import { CloseOutlined } from "@mui/icons-material";
 import ProductInterface from "../interfaces/productInterface";
+import { useSelector } from "react-redux";
+import { RootState } from "../../modules/__reducers";
 
 const responsive = {
   largeDesktop: {
@@ -35,16 +37,27 @@ const responsive = {
   }
 }
 
-function axiosMainResponse(this: any, response: AxiosResponse){
-  if(response.status != 200){
-    console.log("Error status = ", response.status)
-  }
-  this.setAmazonData(response.data)
-  console.log(response.data, "data loaded")
-}
-
 function ProductCarousel(){
-  const [amazonData, setAmazonData] = useState<[ProductInterface]>();
+  const [amazonData, setAmazonData] = useState<ProductInterface[]>([]);
+  const [neweggData, setNeweggData] = useState<ProductInterface[]>([]);
+  const [likeData, setLikeData] = useState<ProductInterface[]>([]);
+  const login = useSelector((state: RootState) => state.userLoginReducer.userLogin);
+
+
+  useEffect(()=>{
+    const getMainData = async () => {
+      const amazonResponse = await axios.get('/api/product/main/amazon')
+      setAmazonData(amazonResponse.data)
+      const neweggResponse = await axios.get('/api/product/main/newegg')
+      setNeweggData(neweggResponse.data)
+      if(login){
+        const likeResponse = await axios.get('/api/product/main/like')
+        setLikeData(likeResponse.data)
+      }
+    }
+    getMainData()
+  }, [])
+
   return(
     <Grid container rowSpacing={9} sx={{height: "100%", paddingTop: "4%"}}>
       <Grid item xl={12}>
@@ -64,16 +77,8 @@ function ProductCarousel(){
         dotListClass="custom-dot-list-style"
         renderButtonGroupOutside={true}
         renderDotsOutside={true}>
-          {
-            useEffect(()=>{
-                axios.get('/api/product/main/amazon').
-                then(axiosMainResponse).catch(error => {
-                console.log(error.response)
-              })
-            })
-          }
           { 
-            amazonData!.map(data => (
+            amazonData.map(data => (
               <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site}/>
             ))
           }
@@ -98,13 +103,16 @@ function ProductCarousel(){
         renderButtonGroupOutside={true}
         renderDotsOutside={true}>
           {
-            product.products.map(product_item => (
-              <ProductCarouselItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.category} site={product_item.site}/>
+            neweggData.map(data => (
+              <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site}/>
             ))
           }
         </Carousel>
       </Grid>
-      <Grid item xl={12}>
+
+      {
+        login === false ? null : 
+        <Grid item xl={12}>
         <Box sx={{width: "100%", display: "flex", flexDirection: "row"}}>
           <Box sx={{justifyContent: "flex-start", width:"98%"}}/>
           <Link to='list'>
@@ -123,12 +131,13 @@ function ProductCarousel(){
         renderButtonGroupOutside={true}
         renderDotsOutside={true}>
           {
-            product.products.map(product_item => (
-              <ProductCarouselItem key={product_item.product_id} name={product_item.name} price={product_item.price} img_src={product_item.img_src} category={product_item.category} site={product_item.site}/>
+            likeData.map(data => (
+              <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site}/>
             ))
           }
         </Carousel>
       </Grid>
+      }
     </Grid>
     
   );
