@@ -1,4 +1,4 @@
-interface ProductInterface{
+type ProductType = {
     id: string,
     name: string,
     price: [priceInterface],
@@ -8,9 +8,9 @@ interface ProductInterface{
     like?: boolean  
 }
   
-interface priceInterface{
+type priceInterface = {
     price: number,
     data: Date
 }
 
-export default ProductInterface
+export default ProductType

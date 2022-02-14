@@ -1,12 +1,11 @@
-import React, {Component} from "react";
+import React, {Component, useEffect, useState} from "react";
 import { Grid, Box } from "@mui/material";
 import './mainArea.css'
-import Typography from '@mui/material/Typography';
-import { Button } from "@mui/material";
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AccordionDetails from '@mui/material/AccordionDetails';
+import MyButton from "./myButton";
 
 function FloatingMenu() {
     const category=["intel cpu", "amd cpu",
@@ -15,6 +14,24 @@ function FloatingMenu() {
                     "nvme ssd", "sata ssd",
                     "liquid cpu cooler",
                     "air cpu cooler"]
+    const [filterList, setFilter] = useState<string[]>([]);
+
+    const addFilterItem = (filterItem: string) => {
+        setFilter([
+            ...filterList,
+            filterItem
+        ])
+    }
+
+    const deleteFilterItem = (filterItem: string) => {
+        setFilter(filterList.filter(item => item !== filterItem))
+    }
+
+    useEffect(() => {
+        console.log(filterList)
+    }, [filterList])
+
+
     return (
         <Accordion className="AccordionStyle" square={true}>
             <AccordionSummary
@@ -26,11 +43,7 @@ function FloatingMenu() {
             <AccordionDetails>
                 <Box className={"FloatingMenuStyle"}>
                     {category.map((categoryItem, index) => (
-                        <Button key={index} className="ButtonStyle" variant="contained" color="inherit">
-                            <Typography variant="body2" color="text.secondary">
-                                {categoryItem}
-                            </Typography>
-                        </Button>
+                        <MyButton key={index} category={categoryItem} addFilterItem={addFilterItem} deleteFilterItem={deleteFilterItem}/>         
                     ))}
                 </Box>
             </AccordionDetails>

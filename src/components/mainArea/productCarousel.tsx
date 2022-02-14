@@ -9,7 +9,7 @@ import {Link} from "react-router-dom";
 import './mainArea.css';
 import axios, { AxiosResponse } from "axios";
 import { CloseOutlined } from "@mui/icons-material";
-import ProductInterface from "../interfaces/productInterface";
+import ProductType from "../types/productType";
 import { useSelector } from "react-redux";
 import { RootState } from "../../modules/__reducers";
 
@@ -38,9 +38,9 @@ const responsive = {
 }
 
 function ProductCarousel(){
-  const [amazonData, setAmazonData] = useState<ProductInterface[]>([]);
-  const [neweggData, setNeweggData] = useState<ProductInterface[]>([]);
-  const [likeData, setLikeData] = useState<ProductInterface[]>([]);
+  const [amazonData, setAmazonData] = useState<ProductType[]>([]);
+  const [neweggData, setNeweggData] = useState<ProductType[]>([]);
+  const [likeData, setLikeData] = useState<ProductType[]>([]);
   const login = useSelector((state: RootState) => state.userLoginReducer.userLogin);
 
 
@@ -63,7 +63,7 @@ function ProductCarousel(){
       <Grid item xl={12}>
         <Box sx={{width: "100%", display: "flex", flexDirection: "row"}}>
           <Box sx={{justifyContent: "flex-start", width:"98%"}}/>
-          <Link to='list'>
+          <Link to='list/:0'>
             <MyMore sx={{justifyContent: "flex-end"}}/>
           </Link>
         </Box>
@@ -87,7 +87,7 @@ function ProductCarousel(){
       <Grid item xl={12}>
         <Box sx={{width: "100%", display: "flex", flexDirection: "row"}}>
           <Box sx={{justifyContent: "flex-start", width:"98%"}}/>
-          <Link to='list'>
+          <Link to='list/:1'>
             <MyMore sx={{justifyContent: "flex-end"}}/>
           </Link>
         </Box>
@@ -115,7 +115,7 @@ function ProductCarousel(){
         <Grid item xl={12}>
         <Box sx={{width: "100%", display: "flex", flexDirection: "row"}}>
           <Box sx={{justifyContent: "flex-start", width:"98%"}}/>
-          <Link to='list'>
+          <Link to='list/:2'>
             <MyMore sx={{justifyContent: "flex-end"}}/>
           </Link>
         </Box>

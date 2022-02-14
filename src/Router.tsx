@@ -19,7 +19,7 @@ function Router() {
           <Grid item xl ={12} lg = {12} md = {12} sm = {12} xs = {12} sx={{height: '98%'}}>
             <Routes>
               <Route path='/' element={<ProductCarousel/>} />
-              <Route path='/list' element={<ListMainArea />} />
+              <Route path='/list/:listId' element={<ListMainArea />} />
               <Route path='/detail' element={<DetailMainArea />} />
             </Routes>
           </Grid>
