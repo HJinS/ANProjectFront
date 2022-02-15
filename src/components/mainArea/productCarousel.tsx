@@ -63,7 +63,7 @@ function ProductCarousel(){
       <Grid item xl={12}>
         <Box sx={{width: "100%", display: "flex", flexDirection: "row"}}>
           <Box sx={{justifyContent: "flex-start", width:"98%"}}/>
-          <Link to='list/:0'>
+          <Link to='list/0'>
             <MyMore sx={{justifyContent: "flex-end"}}/>
           </Link>
         </Box>
@@ -87,7 +87,7 @@ function ProductCarousel(){
       <Grid item xl={12}>
         <Box sx={{width: "100%", display: "flex", flexDirection: "row"}}>
           <Box sx={{justifyContent: "flex-start", width:"98%"}}/>
-          <Link to='list/:1'>
+          <Link to='list/1'>
             <MyMore sx={{justifyContent: "flex-end"}}/>
           </Link>
         </Box>
@@ -115,7 +115,7 @@ function ProductCarousel(){
         <Grid item xl={12}>
         <Box sx={{width: "100%", display: "flex", flexDirection: "row"}}>
           <Box sx={{justifyContent: "flex-start", width:"98%"}}/>
-          <Link to='list/:2'>
+          <Link to='list/2'>
             <MyMore sx={{justifyContent: "flex-end"}}/>
           </Link>
         </Box>

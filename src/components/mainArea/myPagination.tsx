@@ -1,11 +1,21 @@
 import * as React from 'react';
-import Pagination from '@mui/material/Pagination';
+import { IconButton } from '@mui/material';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import './mainArea.css';
+import PaginationType from '../types/paginationType';
 
-function MyPagination() {
+function MyPagination(props: PaginationType) {
   return (
-    <Pagination count={10} size="large" showFirstButton showLastButton boundaryCount={0}
-    className={"PaginationStyle"}/>
+    <div className='PaginationStyle'>
+      <IconButton>
+        <NavigateBeforeIcon onClick={props.previousPage}/>
+      </IconButton>
+      <IconButton>
+        <NavigateNextIcon onClick={props.nextPage}/>
+      </IconButton>
+    </div>
+    
   );
 }
 

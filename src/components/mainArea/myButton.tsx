@@ -5,11 +5,11 @@ import { ButtonType } from '../types/buttonType';
 import './mainArea.css'
 
 function MyButton(props: ButtonType){
-    const [click, setClick] = useState(false);
+    const [click, setClick] = useState<boolean>(false);
 
-    const buttonHandler = () => {
-        setClick(click => !click)
+    const buttonHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
         click ? props.addFilterItem(props.category) : props.deleteFilterItem(props.category)
+        setClick(click => !click)
     }
 
     return(
