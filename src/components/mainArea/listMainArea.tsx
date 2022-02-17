@@ -8,10 +8,6 @@ import { RouteMatch, useParams } from "react-router-dom";
 import ProductListType from "../types/productListType";
 import axios from "axios";
 
-const data = {
-    listId: Number,
-}
-
 function ListMainArea() {
     const params = useParams()
     const listId = params.listId
@@ -37,22 +33,22 @@ function ListMainArea() {
     }, [filterList])
 
     useEffect(() => {
-    if(Number(listId) === 0){
-        uriLocation = "/api/product/list/amazon"
-    }else if(Number(listId) === 1){
-        uriLocation = "/api/product/list/newegg"
-    }else{
-        uriLocation = "/api/product/list/like"
-    }
+        if(Number(listId) === 0){
+            uriLocation = "/api/product/list/amazon"
+        }else if(Number(listId) === 1){
+            uriLocation = "/api/product/list/newegg"
+        }else{
+            uriLocation = "/api/product/list/like"
+        }
 
-    const getListData = async () => {
-        console.log(uriLocation)
-        const response = await axios.get(uriLocation)
-        setData(response.data)
-        setNext(response.data.next)
-        setPrevious(response.data.previous)
-    }
-    getListData()}, [])
+        const getListData = async () => {
+            console.log(uriLocation)
+            const response = await axios.get(uriLocation)
+            setData(response.data)
+            setNext(response.data.next)
+            setPrevious(response.data.previous)
+        }
+        getListData()}, [])
 
     const nextPage = async () => {
         const response = await axios.get(nextUrl)

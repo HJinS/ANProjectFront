@@ -1,11 +1,35 @@
-import React, {Component} from "react";
+import React, {Component, useEffect, useState} from "react";
 import { ResponsiveLine } from '@nivo/line'
 import {LineData} from './tmpLineData'
+import ProductType from "../types/productType";
+import { GraphDataType, GraphPriceType } from "../types/graphType";
 
-function MyPriceGraph(){
+type GraphData  = {
+    data: ProductType
+}
+
+
+function MyPriceGraph(props: GraphData){
+    const [graphData, setData] = useState<GraphDataType[]>([])
+
+    useEffect(() => {
+        const priceData = props.data.price
+        setData(
+            [{
+                id: props.data.category,
+                color: "hsl(300, 70%, 50%)",
+                data: priceData.map((data) => (
+                    {x: data.date, y: data.price}
+                ))
+            }]
+        )
+    }, [])
+    console.log("graphData line 40", graphData)
+    console.log("props data line 41", props.data)
+
     return(
         <ResponsiveLine
-        data={LineData}
+        data={graphData}
         margin={{top: 50, right: 110, bottom: 50, left: 60}}
         xScale={{type: 'point'}}
         yScale={{
@@ -15,14 +39,13 @@ function MyPriceGraph(){
             stacked: true,
             reverse: false
         }}
-        yFormat=" >-.2f"
         axisTop={null}
         axisRight={null}
         axisBottom={{
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'transportation',
+            legend: 'date',
             legendOffset: 36,
             legendPosition: 'middle',
 
@@ -32,7 +55,7 @@ function MyPriceGraph(){
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: 'count',
+            legend: '$',
             legendOffset: -40,
             legendPosition: 'middle',
         }}

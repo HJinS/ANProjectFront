@@ -17,9 +17,8 @@ interface productData{
 
 function ProductListItem(props: productData) {
     return (
-      <Card sx={{ width: '280px', height: '500px', display:'flex', flexDirection: 'column', borderRadius: 2}}>
-          <CardMedia style={{backgroundColor: 'red', justifyContent:'flex-start',
-                              width: '100%', height: '23vh'}} component="img" image={props.img_src}/>
+      <Card className="ListItem">
+          <CardMedia style={{backgroundColor: 'red', justifyContent:'flex-start', width: '100%', height: '23vh'}} component="img" image={props.img_src}/>
           <CardContent style={{justifyContent:'flex-end'}}>
               <Box sx={{paddingTop: "5%"}}/>
               <Typography variant="body1" color="text.secondary" className={"MuiTypography-body1"}>
@@ -39,6 +38,6 @@ function ProductListItem(props: productData) {
           </CardContent>
       </Card>
     );
-  }
+}
   
   export default ProductListItem;

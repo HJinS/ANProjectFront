@@ -10,7 +10,7 @@ type ProductType = {
   
 type priceType = {
     price: number,
-    data: Date
+    date: Date
 }
 
 export default ProductType
