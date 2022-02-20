@@ -8,11 +8,11 @@ import PaginationType from '../types/paginationType';
 function MyPagination(props: PaginationType) {
   return (
     <div className='PaginationStyle'>
-      <IconButton>
-        <NavigateBeforeIcon onClick={props.previousPage}/>
+      <IconButton onClick={props.previousPage} disabled={!props.isPreviousUrl}>
+        <NavigateBeforeIcon/>
       </IconButton>
-      <IconButton>
-        <NavigateNextIcon onClick={props.nextPage}/>
+      <IconButton onClick={props.nextPage} disabled={!props.isNextUrl}>
+        <NavigateNextIcon/>
       </IconButton>
     </div>
     

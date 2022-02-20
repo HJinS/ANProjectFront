@@ -6,9 +6,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import MyButton from "./myButton";
-import FilterType from "../types/filterType";
 
-function FloatingMenu(props: FilterType) {
+function FloatingMenu() {
     const category=["intel cpu", "amd cpu",
                     "radeon gpu", "nvidia gpu",
                     "ddr4 ram", "ddr5 ram",
@@ -27,7 +26,7 @@ function FloatingMenu(props: FilterType) {
             <AccordionDetails>
                 <Box className={"FloatingMenuStyle"}>
                     {category.map((categoryItem, index) => (
-                        <MyButton key={index} category={categoryItem} addFilterItem={props.addFilterItem} deleteFilterItem={props.deleteFilterItem}/>         
+                        <MyButton key={index} category={categoryItem}/>         
                     ))}
                 </Box>
             </AccordionDetails>

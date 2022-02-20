@@ -24,8 +24,6 @@ function MyPriceGraph(props: GraphData){
             }]
         )
     }, [])
-    console.log("graphData line 40", graphData)
-    console.log("props data line 41", props.data)
 
     return(
         <ResponsiveLine

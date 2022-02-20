@@ -5,6 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import MyStar from './myStar';
+import { Link } from "react-router-dom";
 import './mainArea.css';
 
 interface productData{
@@ -13,19 +14,24 @@ interface productData{
     img_src: string,
     category: string,
     site: number,
-    like?: boolean
+    like?: boolean,
+    id: string,
 }
 
 function ProductCarouselItem(props: productData) {
     return (
         <Card sx={{ width: '638px', height: '285px', display:'flex', flexDirection: 'row', borderRadius: 3}}>
-            <CardMedia style={{justifyContent:'flex-start', width: '180px', height: '100%'}}
-            component="img" image={props.img_src}/>
+            <Link to={'../detail'.concat(props.id)} className="LinkStyle">
+                <CardMedia style={{justifyContent:'flex-start', width: '180px', height: '100%'}}
+                component="img" image={props.img_src}/>
+            </Link>
             <CardContent style={{justifyContent:'flex-end', height: '100%'}}>
                 <Box sx={{paddingTop: "5%"}}/>
-                <Typography variant="body1" color="text.secondary" className={"MuiTypography-body1"} >
-                    {props.name}
-                </Typography>
+                <Link to={'../detail'.concat(props.id)} className="LinkStyle">
+                    <Typography variant="body1" color="text.secondary" className={"MuiTypography-body1"} >
+                        {props.name}
+                    </Typography>
+                </Link>
                 <Box sx={{height: "15%"}}/>
                 <Box>
                     <Typography gutterBottom variant="body2" component="div" align='left' marginBottom="3%">

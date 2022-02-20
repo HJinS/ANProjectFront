@@ -12,7 +12,7 @@ function ProductList(listData: ProductListType) {
     <ImageList cols={3} rowHeight={500} className={"ProductListStyle"}>
       {listData.results.map((data) => (
         <ProductListItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src}
-        category={data.category} site={data.site} />
+        category={data.category} site={data.site} id={data.id}/>
       ))}
     </ImageList>
   );

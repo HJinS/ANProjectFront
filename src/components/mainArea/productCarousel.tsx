@@ -79,7 +79,7 @@ function ProductCarousel(){
         renderDotsOutside={true}>
           { 
             amazonData.map(data => (
-              <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site}/>
+              <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site} id={data.id}/>
             ))
           }
         </Carousel>
@@ -104,7 +104,7 @@ function ProductCarousel(){
         renderDotsOutside={true}>
           {
             neweggData.map(data => (
-              <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site}/>
+              <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site} id={data.id}/>
             ))
           }
         </Carousel>
@@ -132,7 +132,7 @@ function ProductCarousel(){
         renderDotsOutside={true}>
           {
             likeData.map(data => (
-              <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site}/>
+              <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site} id={data.id}/>
             ))
           }
         </Carousel>

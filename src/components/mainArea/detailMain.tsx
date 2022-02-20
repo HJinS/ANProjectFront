@@ -5,14 +5,17 @@ import MyPriceGraph from "./myPriceGraph";
 import ProductType from "../types/productType";
 import axios from "axios";
 import DetailITem from "./detailItem";
+import { useParams } from "react-router-dom";
 
 function DetailMainArea() {
+  const params = useParams()
+  const product_id = params.product_id
   const [detailData, setDetailData] = useState<ProductType|undefined>()
   const [category, setCategory] = useState("")
   const [siteInfo, setSite] = useState("")
   useEffect(() => {
     const getDetailData = async () => {
-      const response = await axios.post("/api/product/detail", {"product_id": "B000LRIZEU"})
+      const response = await axios.post("/api/product/detail", {"product_id": product_id})
       setDetailData(response.data)        
     }
     getDetailData()

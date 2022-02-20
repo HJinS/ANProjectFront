@@ -20,7 +20,7 @@ function Router() {
             <Routes>
               <Route path='/' element={<ProductCarousel/>} />
               <Route path='/list/:listId' element={<ListMainArea />} />
-              <Route path='/detail:postId' element={<DetailMainArea />} />
+              <Route path='/detail:product_id' element={<DetailMainArea />} />
             </Routes>
           </Grid>
         </Grid>

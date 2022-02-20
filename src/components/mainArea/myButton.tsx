@@ -3,13 +3,24 @@ import Typography from '@mui/material/Typography';
 import { Button } from "@mui/material";
 import { ButtonType } from '../types/buttonType';
 import './mainArea.css'
+import { addFilter, deleteFilter } from '../../modules/__reducers/filterState';
+import { useDispatch } from 'react-redux';
 
 function MyButton(props: ButtonType){
     const [click, setClick] = useState<boolean>(false);
+    const dispatch = useDispatch();
 
     const buttonHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
-        click ? props.addFilterItem(props.category) : props.deleteFilterItem(props.category)
+        click ? deleteFilterItem(props.category) : addFilterItem(props.category)
         setClick(click => !click)
+    }
+
+    const addFilterItem = (filterItem: string) => {
+        dispatch(addFilter(filterItem))
+    }
+
+    const deleteFilterItem = (filterItem: string) => {
+        dispatch(deleteFilter(filterItem))
     }
 
     return(

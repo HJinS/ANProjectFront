@@ -7,30 +7,20 @@ import ProductList from "./productList";
 import { RouteMatch, useParams } from "react-router-dom";
 import ProductListType from "../types/productListType";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import { RootState } from "../../modules/__reducers";
 
 function ListMainArea() {
     const params = useParams()
     const listId = params.listId
 
-    const [filterList, setFilter] = useState<string[]>([]);
+    const filter = useSelector((state: RootState) => state.filterReducer)
     const [nextUrl, setNext] = useState<string>("");
     const [previousUrl, setPrevious] = useState<string>("");
 
     var uriLocation = ""
 
     const [productData, setData] = useState<ProductListType>({results: []})
-
-    const addFilterItem = (filterItem: string) => {
-        setFilter((list) => ([...list, filterItem]))
-    }
-
-    const deleteFilterItem = (filterItem: string) => {
-        setFilter(filterList.filter(item => item !== filterItem))
-    }
-
-    useEffect(() => {
-        console.log(filterList, "line = 32")
-    }, [filterList])
 
     useEffect(() => {
         if(Number(listId) === 0){
@@ -51,27 +41,30 @@ function ListMainArea() {
         getListData()}, [])
 
     const nextPage = async () => {
-        const response = await axios.get(nextUrl)
-        setData(response.data)
-        setNext(response.data.next)
-        setPrevious(response.data.previous)
+        axios.get(nextUrl).then(response => {
+            setData(response.data)
+            setNext(response.data.next)
+            setPrevious(response.data.previous)
+        }).catch(error => console.log(error))
     }
 
     const previousPage = async () => {
-        const response = await axios.get(previousUrl)
-        setData(response.data)
-        setNext(response.data.next)
-        setPrevious(response.data.previous)
+        axios.get(previousUrl).then(response => {
+            setData(response.data)
+            setNext(response.data.next)
+            setPrevious(response.data.previous)
+        }).catch(error => console.log(error))
     }
 
     return (
         <Box className={"ListMainAreaStyle"}>
             <Box sx={{width: "68%"}}>
-                <MyPagination nextPage={nextPage} previousPage={previousPage}/>
+                <MyPagination nextPage={nextPage} previousPage={previousPage}
+                isNextUrl={nextUrl === null ? false:true} isPreviousUrl={previousUrl === null ? false:true}/>
                 <Grid container>
                     <Grid item xs={4}>
                         <Box className={"FloatingMenuOuterBoxStyle"}>
-                            <FloatingMenu addFilterItem={addFilterItem} deleteFilterItem={deleteFilterItem} />
+                            <FloatingMenu />
                         </Box>
                     </Grid>
                     <Grid item xs={8}>
