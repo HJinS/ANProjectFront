@@ -1,10 +1,9 @@
-import React, {Component, useEffect, useState} from "react";
+import React from "react";
 import ProductListItem from "./productListItem";
-import product from "../../testDB/product.json";
 import ImageList from '@mui/material/ImageList';
 import './mainArea.css';
 import ProductListType from "../types/productListType";
-
+import {Link} from 'react-router-dom';
 
 function ProductList(listData: ProductListType) {
 

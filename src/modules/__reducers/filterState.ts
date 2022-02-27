@@ -1,5 +1,6 @@
 const ADDFILTER = 'FADD' as const;
 const DELETEFILTER = 'FDELETE' as const;
+const INITFILTER = 'FINIT' as const;
 
 export const addFilter = (filterItem: string) => ({
     type: ADDFILTER,
@@ -11,9 +12,14 @@ export const deleteFilter = (filterItem: string) => ({
     payload: filterItem,
 });
 
+export const initFilter = () => ({
+    type: INITFILTER,
+})
+
 type FilterAction = 
 | ReturnType<typeof addFilter>
-| ReturnType<typeof deleteFilter>;
+| ReturnType<typeof deleteFilter>
+| ReturnType<typeof initFilter>;
 
 type FilterState = string[];
 
@@ -28,6 +34,8 @@ function filterReducer(
             return state.concat(action.payload)
         case DELETEFILTER:
             return state.filter(item => item != action.payload)
+        case INITFILTER:
+            return state = initialState
         default:
             return state
     }

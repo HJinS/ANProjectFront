@@ -3,3 +3,7 @@
     box-shadow: none;
     background-color: transparent;
 }
+.LinkStyle{
+    text-decoration: none;
+    color: white;
+}

@@ -7,38 +7,53 @@ import ProductList from "./productList";
 import { RouteMatch, useParams } from "react-router-dom";
 import ProductListType from "../types/productListType";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../modules/__reducers";
+import Button from '@mui/material/Button';
+import { initFilter } from "../../modules/__reducers/filterState";
+import useDidMountEffect from "../myHooks/myDidMountEffect";
 
 function ListMainArea() {
     const params = useParams()
     const listId = params.listId
 
+    const setFilter = useDispatch();
     const filter = useSelector((state: RootState) => state.filterReducer)
     const [nextUrl, setNext] = useState<string>("");
     const [previousUrl, setPrevious] = useState<string>("");
-
-    var uriLocation = ""
+    const [uriLocation, setUri] = useState<string>("");
 
     const [productData, setData] = useState<ProductListType>({results: []})
 
     useEffect(() => {
         if(Number(listId) === 0){
-            uriLocation = "/api/product/list/amazon"
+            setUri("/api/product/list/amazon")
         }else if(Number(listId) === 1){
-            uriLocation = "/api/product/list/newegg"
+            setUri("/api/product/list/amazon")
         }else{
-            uriLocation = "/api/product/list/like"
+            setUri("/api/product/list/amazon")
         }
+    }, [])
 
-        const getListData = async () => {
-            console.log(uriLocation)
-            const response = await axios.get(uriLocation)
+    const getListData = async () => {
+        await axios.get(uriLocation).then(response => {
             setData(response.data)
             setNext(response.data.next)
             setPrevious(response.data.previous)
-        }
-        getListData()}, [])
+        }).catch(error => console.log(error))
+    }
+
+    const getListDataPost = async () => {
+        axios.post(uriLocation, {"filter": filter}).then(response => {
+            setData(response.data)
+            setNext(response.data.next)
+            setPrevious(response.data.previous)
+        }).catch(error => console.log(error))
+    }
+
+    useDidMountEffect(() => {
+        getListData()
+    }, [uriLocation])
 
     const nextPage = async () => {
         axios.get(nextUrl).then(response => {
@@ -56,6 +71,14 @@ function ListMainArea() {
         }).catch(error => console.log(error))
     }
 
+    const filterAction = async () => {
+        if(filter.length == 0){
+            getListData()
+        }else{
+            getListDataPost()
+        }
+    }
+
     return (
         <Box className={"ListMainAreaStyle"}>
             <Box sx={{width: "68%"}}>
@@ -64,7 +87,13 @@ function ListMainArea() {
                 <Grid container>
                     <Grid item xs={4}>
                         <Box className={"FloatingMenuOuterBoxStyle"}>
-                            <FloatingMenu />
+                            <div className="FloatingMenuInnerBoxStyle">
+                                <FloatingMenu />
+                                <Button variant="outlined" className="FilterButtonStyle" onClick={filterAction}>
+                                    적용
+                                </Button>
+                            </div>
+                            
                         </Box>
                     </Grid>
                     <Grid item xs={8}>

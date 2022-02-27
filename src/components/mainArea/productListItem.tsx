@@ -20,28 +20,28 @@ interface productData{
 function ProductListItem(props: productData) {
     return (
       <Card className="ListItem">
-          <Link to={'../detail'.concat(props.id)} className="LinkStyle">
-            <CardMedia style={{backgroundColor: 'red', justifyContent:'flex-start', width: '100%', height: '23vh'}} component="img" image={props.img_src}/>
-          </Link>
-          <CardContent style={{justifyContent:'flex-end'}}>
-              <Box sx={{paddingTop: "5%"}}/>
-                <Link to={'../detail'.concat(props.id)} className="LinkStyle">
-                    <Typography variant="body1" color="text.secondary" className={"MuiTypography-body1"}>
-                        {props.name}                    
-                    </Typography>
-                </Link>
-              <Box sx={{height: "15%"}}/>
-              <Box>
-                <Typography gutterBottom variant="body2" component="div" className={"MuiTypography-body2"}>
-                    {props.category}
-                </Typography>
-                <Typography gutterBottom variant="h5" component="div" className={"MuiTypography-h5"}>
-                    {props.price}
-                    <MyStar on={false}/>
-                </Typography>
-                
-              </Box>
-          </CardContent>
+        <Link to={'../detail'.concat(props.id)} className="LinkStyle">
+          <CardMedia style={{justifyContent:'flex-start', width: '100%', height: '280px'}} component="img" image={props.img_src}/>
+        </Link>
+        <CardContent style={{justifyContent:'flex-end'}}>
+            <Box sx={{paddingTop: "5%"}}/>
+            <Link to={'../detail'.concat(props.id)} className="LinkStyle">
+              <Typography variant="body1" color="text.secondary" className={"MuiTypography-body1"}>
+                  {props.name}                    
+              </Typography>
+            </Link>
+            <Box sx={{height: "15%"}}/>
+            
+            <Box>
+              <Typography gutterBottom variant="body2" component="div" className={"MuiTypography-body2"}>
+                  {props.category}
+              </Typography>
+              <Typography gutterBottom variant="h5" component="div" className={"MuiTypography-h5"}>
+                  {props.price}
+                  <MyStar on={false}/>
+              </Typography>
+            </Box>
+        </CardContent>
       </Card>
     );
 }

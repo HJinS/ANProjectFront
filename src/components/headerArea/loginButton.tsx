@@ -4,7 +4,6 @@ import './header.css';
 import axios, { AxiosResponse } from "axios";
 import GoogleIcon from '@mui/icons-material/Google';
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../modules/__reducers";
 import { login, logout } from "../../modules/__reducers/userLoginState";
 
 const JWT_EXPIRY_TIME = 24 * 3600 * 1000;
