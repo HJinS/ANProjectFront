@@ -2,16 +2,15 @@ import React, {Component, useEffect, useState} from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import ProductCarouselItem from "./productCarouselItem";
-import product from "../../testDB/product.json";
 import { Grid, Box } from "@mui/material";
 import MyMore from "./myMoreIcon";
 import {Link} from "react-router-dom";
 import './mainArea.css';
 import axios, { AxiosResponse } from "axios";
-import { CloseOutlined } from "@mui/icons-material";
 import ProductType from "../types/productType";
 import { useSelector } from "react-redux";
 import { RootState } from "../../modules/__reducers";
+import MyCarouselItemLoader from "../loader/carouselLoader";
 
 const responsive = {
   largeDesktop: {
@@ -42,10 +41,12 @@ function ProductCarousel(){
   const [neweggData, setNeweggData] = useState<ProductType[]>([]);
   const [likeData, setLikeData] = useState<ProductType[]>([]);
   const login = useSelector((state: RootState) => state.userLoginReducer.userLogin);
-
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const emptyList = [1, 2, 3, 4, 5, 6, 7];
 
   useEffect(()=>{
     const getMainData = async () => {
+      setLoading(true)
       const amazonResponse = await axios.get('/api/product/main/amazon')
       setAmazonData(amazonResponse.data)
       const neweggResponse = await axios.get('/api/product/main/newegg')
@@ -54,6 +55,7 @@ function ProductCarousel(){
         const likeResponse = await axios.get('/api/product/main/like')
         setLikeData(likeResponse.data)
       }
+      setLoading(false)
     }
     getMainData()
   }, [])
@@ -78,7 +80,9 @@ function ProductCarousel(){
         renderButtonGroupOutside={true}
         renderDotsOutside={true}>
           { 
-            amazonData.map(data => (
+            isLoading == true ? emptyList.map(data => (
+              <MyCarouselItemLoader key={data}/>
+            )) : amazonData.map(data => (
               <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site} id={data.id}/>
             ))
           }
@@ -103,7 +107,9 @@ function ProductCarousel(){
         renderButtonGroupOutside={true}
         renderDotsOutside={true}>
           {
-            neweggData.map(data => (
+            isLoading == true ? emptyList.map(data => (
+              <MyCarouselItemLoader key={data}/>
+            )) : neweggData.map(data => (
               <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site} id={data.id}/>
             ))
           }
@@ -131,7 +137,9 @@ function ProductCarousel(){
         renderButtonGroupOutside={true}
         renderDotsOutside={true}>
           {
-            likeData.map(data => (
+            isLoading == true ? emptyList.map(data => (
+              <MyCarouselItemLoader key={data}/>
+            )) : likeData.map(data => (
               <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site} id={data.id}/>
             ))
           }

@@ -4,8 +4,8 @@ import './mainArea.css';
 import MyPagination from './myPagination';
 import FloatingMenu from "./floatingMenu";
 import ProductList from "./productList";
-import { RouteMatch, useParams } from "react-router-dom";
-import ProductListType from "../types/productListType";
+import { useParams } from "react-router-dom";
+import {ProductListType} from "../types/productListType";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../modules/__reducers";
@@ -23,7 +23,9 @@ function ListMainArea() {
     const [previousUrl, setPrevious] = useState<string>("");
     const [uriLocation, setUri] = useState<string>("");
 
-    const [productData, setData] = useState<ProductListType>({results: []})
+    const [productData, setData] = useState<ProductListType>({results: []});
+
+    const [isLoading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
         if(Number(listId) === 0){
@@ -36,18 +38,22 @@ function ListMainArea() {
     }, [])
 
     const getListData = async () => {
+        setLoading(true)
         await axios.get(uriLocation).then(response => {
             setData(response.data)
             setNext(response.data.next)
             setPrevious(response.data.previous)
+            setLoading(false)
         }).catch(error => console.log(error))
     }
 
     const getListDataPost = async () => {
+        setLoading(true)
         axios.post(uriLocation, {"filter": filter}).then(response => {
             setData(response.data)
             setNext(response.data.next)
             setPrevious(response.data.previous)
+            setLoading(false)
         }).catch(error => console.log(error))
     }
 
@@ -56,18 +62,22 @@ function ListMainArea() {
     }, [uriLocation])
 
     const nextPage = async () => {
+        setLoading(true)
         axios.get(nextUrl).then(response => {
             setData(response.data)
             setNext(response.data.next)
             setPrevious(response.data.previous)
+            setLoading(false)
         }).catch(error => console.log(error))
     }
 
     const previousPage = async () => {
+        setLoading(true)
         axios.get(previousUrl).then(response => {
             setData(response.data)
             setNext(response.data.next)
             setPrevious(response.data.previous)
+            setLoading(false)
         }).catch(error => console.log(error))
     }
 
@@ -97,7 +107,7 @@ function ListMainArea() {
                         </Box>
                     </Grid>
                     <Grid item xs={8}>
-                        <ProductList results={productData.results}/>
+                        <ProductList results={productData.results} isLoading={isLoading}/>
                     </Grid>
                 </Grid>
             </Box>

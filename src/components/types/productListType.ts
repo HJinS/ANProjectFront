@@ -1,7 +1,10 @@
 import ProductType from "./productType"
 
-type ProductListType  = {
+export type ProductListType  = {
     results: ProductType[]
 }
 
-export default ProductListType
+export type ProductListComponentType = {
+    results: ProductType[]
+    isLoading: boolean
+}
