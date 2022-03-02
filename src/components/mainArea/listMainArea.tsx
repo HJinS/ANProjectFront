@@ -5,13 +5,14 @@ import MyPagination from './myPagination';
 import FloatingMenu from "./floatingMenu";
 import ProductList from "./productList";
 import { useParams } from "react-router-dom";
-import {ProductListType} from "../types/productListType";
+import {LikeListType, ProductListType} from "../types/productListType";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../modules/__reducers";
 import Button from '@mui/material/Button';
 import { initFilter } from "../../modules/__reducers/filterState";
 import useDidMountEffect from "../myHooks/myDidMountEffect";
+import LikeProductType from "../types/likeProductType";
 
 function ListMainArea() {
     const params = useParams()
@@ -24,6 +25,7 @@ function ListMainArea() {
     const [uriLocation, setUri] = useState<string>("");
 
     const [productData, setData] = useState<ProductListType>({results: []});
+    const [likeData, setLikeData] = useState<LikeListType>({results: []});
 
     const [isLoading, setLoading] = useState<boolean>(false);
 
@@ -31,16 +33,16 @@ function ListMainArea() {
         if(Number(listId) === 0){
             setUri("/api/product/list/amazon")
         }else if(Number(listId) === 1){
-            setUri("/api/product/list/amazon")
+            setUri("/api/product/list/newegg")
         }else{
-            setUri("/api/product/list/amazon")
+            setUri("/api/product/list/like")
         }
     }, [])
 
     const getListData = async () => {
         setLoading(true)
         await axios.get(uriLocation).then(response => {
-            setData(response.data)
+            Number(listId) === 2 ? setLikeData(response.data) : setData(response.data)
             setNext(response.data.next)
             setPrevious(response.data.previous)
             setLoading(false)
@@ -50,7 +52,7 @@ function ListMainArea() {
     const getListDataPost = async () => {
         setLoading(true)
         axios.post(uriLocation, {"filter": filter}).then(response => {
-            setData(response.data)
+            Number(listId) === 2 ? setLikeData(response.data) : setData(response.data)
             setNext(response.data.next)
             setPrevious(response.data.previous)
             setLoading(false)
@@ -64,7 +66,7 @@ function ListMainArea() {
     const nextPage = async () => {
         setLoading(true)
         axios.get(nextUrl).then(response => {
-            setData(response.data)
+            Number(listId) === 2 ? setLikeData(response.data) : setData(response.data)
             setNext(response.data.next)
             setPrevious(response.data.previous)
             setLoading(false)
@@ -74,7 +76,7 @@ function ListMainArea() {
     const previousPage = async () => {
         setLoading(true)
         axios.get(previousUrl).then(response => {
-            setData(response.data)
+            Number(listId) === 2 ? setLikeData(response.data) : setData(response.data)
             setNext(response.data.next)
             setPrevious(response.data.previous)
             setLoading(false)
@@ -88,7 +90,7 @@ function ListMainArea() {
             getListDataPost()
         }
     }
-
+    
     return (
         <Box className={"ListMainAreaStyle"}>
             <Box sx={{width: "68%"}}>
@@ -107,7 +109,7 @@ function ListMainArea() {
                         </Box>
                     </Grid>
                     <Grid item xs={8}>
-                        <ProductList results={productData.results} isLoading={isLoading}/>
+                        {Number(listId) === 2 ? <ProductList isLoading={isLoading} likeResults={likeData.results} isLike={true}/> : <ProductList productResults={productData.results} isLoading={isLoading} isLike={false}/>}
                     </Grid>
                 </Grid>
             </Box>

@@ -1,5 +1,5 @@
 import CssBaseline from '@mui/material/CssBaseline';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {Grid} from '@mui/material';
 import HeaderArea from './components/headerArea/header';
@@ -8,6 +8,7 @@ import ProductCarousel from './components/mainArea/productCarousel';
 import DetailMainArea from './components/mainArea/detailMain';
 
 function Router() {
+
   return (
     <BrowserRouter>
       <CssBaseline/>

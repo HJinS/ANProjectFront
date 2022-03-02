@@ -46,7 +46,7 @@ function DetailMainArea() {
           </Box>
           <Box className={"DetailMainInfoArea"}>
               {
-                detailData === undefined ? null : <DetailITem name={detailData.name} img_src={detailData.img_src} category={detailData.category} site={detailData.site} like={detailData.like} />
+                detailData === undefined ? null : <DetailITem name={detailData.name} img_src={detailData.img_src} category={detailData.category} site={detailData.site} like={detailData.like} id={detailData.id} />
               }
           </Box>
         </Box>

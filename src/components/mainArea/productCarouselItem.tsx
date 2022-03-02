@@ -39,7 +39,7 @@ function ProductCarouselItem(props: productData) {
                     </Typography>
                     <Typography gutterBottom variant="h5" component="div" align='left'>
                         {props.price}
-                        {props.like===undefined ? null : <MyStar on={props.like} sx={{marginBottom: "8px", marginLeft: "5px", color: "#1976D2"}}/>}
+                        {props.like===undefined ? null : <MyStar on={props.like} productId={props.id}/>}
                         
                     </Typography>
                 </Box>

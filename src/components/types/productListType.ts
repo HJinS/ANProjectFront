@@ -1,10 +1,17 @@
 import ProductType from "./productType"
+import LikeProductType from "./likeProductType"
 
-export type ProductListType  = {
+export type ProductListType = {
     results: ProductType[]
 }
 
+export type LikeListType = {
+    results: LikeProductType[]
+}
+
 export type ProductListComponentType = {
-    results: ProductType[]
+    productResults? : ProductType[]
+    likeResults? : LikeProductType[]
     isLoading: boolean
+    isLike: boolean
 }

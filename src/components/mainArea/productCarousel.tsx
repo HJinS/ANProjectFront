@@ -6,11 +6,12 @@ import { Grid, Box } from "@mui/material";
 import MyMore from "./myMoreIcon";
 import {Link} from "react-router-dom";
 import './mainArea.css';
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import ProductType from "../types/productType";
 import { useSelector } from "react-redux";
 import { RootState } from "../../modules/__reducers";
 import MyCarouselItemLoader from "../loader/carouselLoader";
+import LikeProductType from "../types/likeProductType";
 
 const responsive = {
   largeDesktop: {
@@ -39,7 +40,7 @@ const responsive = {
 function ProductCarousel(){
   const [amazonData, setAmazonData] = useState<ProductType[]>([]);
   const [neweggData, setNeweggData] = useState<ProductType[]>([]);
-  const [likeData, setLikeData] = useState<ProductType[]>([]);
+  const [likeData, setLikeData] = useState<LikeProductType[]>([]);
   const login = useSelector((state: RootState) => state.userLoginReducer.userLogin);
   const [isLoading, setLoading] = useState<boolean>(false);
   const emptyList = [1, 2, 3, 4, 5, 6, 7];
@@ -83,7 +84,7 @@ function ProductCarousel(){
             isLoading == true ? emptyList.map(data => (
               <MyCarouselItemLoader key={data}/>
             )) : amazonData.map(data => (
-              <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site} id={data.id}/>
+              <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site} id={data.id} like={data.like}/>
             ))
           }
         </Carousel>
@@ -110,7 +111,7 @@ function ProductCarousel(){
             isLoading == true ? emptyList.map(data => (
               <MyCarouselItemLoader key={data}/>
             )) : neweggData.map(data => (
-              <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site} id={data.id}/>
+              <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site} id={data.id} like={data.like}/>
             ))
           }
         </Carousel>
@@ -140,7 +141,7 @@ function ProductCarousel(){
             isLoading == true ? emptyList.map(data => (
               <MyCarouselItemLoader key={data}/>
             )) : likeData.map(data => (
-              <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site} id={data.id}/>
+              <ProductCarouselItem key={data.products.product_id} name={data.products.name} price={data.price[0].price} img_src={data.products.img_src} category={data.products.category} site={data.products.site} id={data.products.product_id}/>
             ))
           }
         </Carousel>

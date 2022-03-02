@@ -21,10 +21,17 @@ function ProductList(listData: ProductListComponentType) {
   }
   return (
     <ImageList cols={3} rowHeight={500} className={"ProductListStyle"}>
-      {listData.results.map((data) => (
-        <ProductListItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src}
-        category={data.category} site={data.site} id={data.id}/>
-      ))}
+      {
+        listData.isLike === true ? listData.likeResults!.map(
+          data => (
+            <ProductListItem key={data.products.product_id} name={data.products.name} price={data.price[0].price}
+            img_src={data.products.img_src} category={data.products.category} site={data.products.site}
+            id={data.products.product_id}/>)) : listData.productResults!.map(
+              data => (
+                <ProductListItem key={data.id} name={data.name} price={data.price[0].price}
+                img_src={data.img_src} category={data.category} site={data.site}
+                id={data.id} like={data.like}/>))
+      }
     </ImageList>
   );
 }

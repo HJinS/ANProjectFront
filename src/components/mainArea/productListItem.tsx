@@ -16,6 +16,7 @@ interface productData{
     category: string,
     site: number,
     id: string,
+    like?: boolean,
 }
 
 function ProductListItem(props: productData) {
@@ -42,7 +43,7 @@ function ProductListItem(props: productData) {
               </Typography>
               <Typography gutterBottom variant="h5" component="div" className={"MuiTypography-h5"}>
                   {props.price}
-                  <MyStar on={false}/>
+                  <MyStar on={false} productId={props.id} />
               </Typography>
             </Box>
           </CardContent>

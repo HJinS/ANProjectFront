@@ -13,6 +13,7 @@ interface productData{
     category: string,
     site: number,
     like?: boolean,
+    id: string,
 }
 
 function DetailITem(props: productData) {
@@ -26,7 +27,7 @@ function DetailITem(props: productData) {
                 </Typography>
                 <Box sx={{height: "15%"}}/>
                 <Box>
-                {props.like === true ? <MyStar on={true}/> : <></>}
+                {props.like === true ? <MyStar on={true} productId={props.id}/> : null}
                 </Box>
             </CardContent>
         </Card>

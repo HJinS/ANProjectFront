@@ -1,11 +1,12 @@
 type ProductType = {
     id: string,
     name: string,
-    price: [priceType],
+    price: priceType[],
     img_src: string,
     category: string,
     site: number,
-    like?: boolean  
+    like?: boolean,
+    updated_dt: Date,
 }
   
 type priceType = {

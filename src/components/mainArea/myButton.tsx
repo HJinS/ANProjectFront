@@ -24,7 +24,7 @@ function MyButton(props: ButtonType){
     }
 
     return(
-        <Button className="ButtonStyle" variant="contained" color="inherit" sx={{backgroundColor: click ? "#F4F4F4":"#bfb4b4"}} onClick={buttonHandler}>
+        <Button className="ButtonStyle" variant="contained" color="inherit" sx={{backgroundColor: click ? "#F4F4F4":"#bfb4b4"}} onClick={buttonHandler} disableRipple>
             <Typography variant="body2" color="text.secondary">
                 {props.category}
             </Typography>

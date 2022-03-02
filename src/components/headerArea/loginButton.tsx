@@ -21,7 +21,7 @@ function onSilentRefresh(){
     const dispatch = useDispatch();
     axios.get('/api/social/token/refresh')
         .then(onLoginSuccess).catch(error => {
-            dispatch(logout)
+            dispatch(logout())
             console.log(error.response)
         })
 }
@@ -31,7 +31,7 @@ function onLoginSuccess(response: AxiosResponse){
     const dispatch = useDispatch();
     axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
     setTimeout(onSilentRefresh, JWT_EXPIRY_TIME - 60000);
-    dispatch(login);
+    dispatch(login());
 }
 
 
