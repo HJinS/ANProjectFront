@@ -23,23 +23,22 @@ pipeline {
                     }
                 }
             }
-        }
+            stage('Deploy React') {
+                steps {
+                    dir('BuildDir') {
+                        withAWS(region: 'ap-northeast-2', credentials: 'JenkinsUser') {
+                            sh 'aws s3 sync ./build s3://anfrontends3 --delete --profile default'
+                        }
 
-        stage('Deploy React') {
-            steps {
-                dir('BuildDir') {
-                    withAWS(region: 'ap-northeast-2', credentials: 'JenkinsUser') {
-                        sh 'aws s3 sync ./build s3://anfrontends3 --delete --profile default'
                     }
-
                 }
-            }
-            post {
-                success {
-                    slackSend (channel: 'frontch', color: '#00FF20', message: "Deploy ended successfully - '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-                }
-                failure {
-                    slackSend (channel: 'frontch', color: '#FF0040', message: "Deploy failed - '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+                post {
+                    success {
+                        slackSend (channel: 'frontch', color: '#00FF20', message: "Deploy ended successfully - '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+                    }
+                    failure {
+                        slackSend (channel: 'frontch', color: '#FF0040', message: "Deploy failed - '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+                    }
                 }
             }
         }
