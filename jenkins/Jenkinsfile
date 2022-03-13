@@ -6,39 +6,37 @@ pipeline {
     }
 
     stages {
-        stages {
-            stage("Build"){
-                steps {
-                    dir('BuildDir') {
-                        sh 'sudo npm install'
-                        sh 'sudo npm run build'
-                    }
-                }
-                post {
-                    success {
-                        slackSend (channel: 'frontch', color: '#00FF20', message: "npm build ended successfully - '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-                    }
-                    failure {
-                        slackSend (channel: 'frontch', color: '#FF0040', message: "npm build failed - '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-                    }
+        stage("Build"){
+            steps {
+                dir('BuildDir') {
+                    sh 'sudo npm install'
+                    sh 'sudo npm run build'
                 }
             }
-            stage('Deploy React') {
-                steps {
-                    dir('BuildDir') {
-                        withAWS(region: 'ap-northeast-2', credentials: 'JenkinsUser') {
-                            sh 'aws s3 sync ./build s3://anfrontends3 --delete --profile default'
-                        }
-
-                    }
+            post {
+                success {
+                    slackSend (channel: 'frontch', color: '#00FF20', message: "npm build ended successfully - '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
                 }
-                post {
-                    success {
-                        slackSend (channel: 'frontch', color: '#00FF20', message: "Deploy ended successfully - '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+                failure {
+                    slackSend (channel: 'frontch', color: '#FF0040', message: "npm build failed - '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+                }
+            }
+        }
+        stage('Deploy React') {
+            steps {
+                dir('BuildDir') {
+                    withAWS(region: 'ap-northeast-2', credentials: 'JenkinsUser') {
+                        sh 'aws s3 sync ./build s3://anfrontends3 --delete --profile default'
                     }
-                    failure {
-                        slackSend (channel: 'frontch', color: '#FF0040', message: "Deploy failed - '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-                    }
+
+                }
+            }
+            post {
+                success {
+                    slackSend (channel: 'frontch', color: '#00FF20', message: "Deploy ended successfully - '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+                }
+                failure {
+                    slackSend (channel: 'frontch', color: '#FF0040', message: "Deploy failed - '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
                 }
             }
         }
