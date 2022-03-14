@@ -26,8 +26,9 @@ pipeline {
 
         stage('Build'){
             steps {
-                sh 'npm install'
-                sh 'npm run build'
+                sh 'tar zxvf cache.tar.gz'
+                sh 'pnpm config set store-dir $PWD/cache'
+                sh 'pnpm install &> /dev/null'
             }
             post {
                 success {
