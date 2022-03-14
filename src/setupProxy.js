@@ -1,10 +1,13 @@
+import dotenv from 'dotenv'
+dotenv.config()
+
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function (app) {
     app.use(
         '/api',
         createProxyMiddleware({
-            target: 'http://localhost:8000',
+            target: process.env.SERVER_IP,
             changeOrigin: true,
             pathRewrite: {
                 '^/api': ''
