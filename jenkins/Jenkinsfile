@@ -28,6 +28,7 @@ pipeline {
             steps {
                 sh 'pnpm config set store-dir $PWD/cache'
                 sh 'pnpm install &> /dev/null'
+                sh 'pnpm build'
             }
             post {
                 success {
