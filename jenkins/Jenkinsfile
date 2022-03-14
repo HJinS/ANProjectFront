@@ -6,7 +6,29 @@ pipeline {
     }
 
     stages {
-        stage("Build"){
+
+        stage('Set parameter') {
+            wnvironment {
+                SERVER_IP = 'server ip'
+            }
+            steps {
+                script {
+                    withAWS(region: 'ap-northeast-2', credentials: 'JenkinsUser'){
+                        env.SERVER_IP = env.SECRET_KEY = sh(script: "aws ssm get-parameters --name /front/SERVER_IP | jq -j '.Parameters[0].Value'", returnStdout: true)
+                    }
+                }
+            }
+            post {
+                success {
+                    slackSend (channel: 'frontch', color: '#00FF20', message: "get parameter finished - '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+                }
+                failure {
+                    slackSend (channel: 'frontch', color: '#FF0040', message: "get parameter failed - '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+                }
+            }
+        }
+
+        stage('Build'){
             steps {
                 sh 'npm install'
                 sh 'npm run build'
