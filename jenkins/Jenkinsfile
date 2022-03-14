@@ -26,8 +26,8 @@ pipeline {
 
         stage('Build'){
             steps {
-                sh 'pnpm install &> /dev/null'
-                sh 'pnpm run build'
+                sh 'yarn install'
+                sh 'CI=false yarn build'
             }
             post {
                 success {
