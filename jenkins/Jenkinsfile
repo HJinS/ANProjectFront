@@ -41,7 +41,7 @@ pipeline {
         stage('Deploy React') {
             steps {
                 withAWS(region: 'ap-northeast-2', credentials: 'JenkinsUser') {
-                    sh 'aws s3 sync ./build s3://anfrontends3 --delete --profile default'
+                    sh 'aws s3 sync ./build s3://anfrontends3'
                 }
 
             }
