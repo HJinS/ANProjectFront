@@ -27,7 +27,7 @@ pipeline {
         stage('Build'){
             steps {
                 sh 'pnpm install &> /dev/null'
-                sh 'pnpm build'
+                sh 'pnpm run build'
             }
             post {
                 success {
