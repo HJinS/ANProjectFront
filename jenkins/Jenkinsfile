@@ -26,7 +26,7 @@ pipeline {
 
         stage('Build'){
             steps {
-                sh 'yarn install --prefer-offline &> /dev/null'
+                sh 'yarn install &> /dev/null'
                 sh 'CI=false yarn build'
             }
             post {
