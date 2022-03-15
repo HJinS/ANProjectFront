@@ -4,6 +4,11 @@ pipeline {
     environment {
         SERVER_IP = 'server ip'
     }
+
+    tools {
+        nodejs 'node16'
+    }
+
     stages {
 
         stage('Set parameter') {
