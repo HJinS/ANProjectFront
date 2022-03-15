@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0",
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.2.5",
-    "@mui/material": "^5.2.7",
-    "@mui/styled-engine-sc": "^5.1.0",
+    "@mui/material": "^5.5.1",
+    "@mui/styled-engine-sc": "^5.4.2",
     "@nivo/core": "^0.79.0",
     "@nivo/line": "^0.79.1",
     "@testing-library/jest-dom": "^5.16.1",
@@ -61,7 +61,6 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.1",
-    "@types/jsonwebtoken": "^8.5.8",
-    "prisma": "^3.10.0"
+    "@types/jsonwebtoken": "^8.5.8"
   }
 }
