@@ -34,6 +34,7 @@ pipeline {
                 sh 'yarn config delete proxy'
                 sh 'yarn config delete https-proxy'
                 sh 'yarn install --network-timeout 60000000'
+                sh 'yarn cache clean'
                 sh 'yarn install'
                 sh 'CI=false yarn build'
             }
