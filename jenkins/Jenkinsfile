@@ -26,7 +26,7 @@ pipeline {
 
         stage('Build'){
             steps {
-                sh 'yarn install &> /dev/null'
+                sh 'yarn install'
                 sh 'CI=false yarn build'
             }
             post {
