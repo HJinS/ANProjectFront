@@ -29,10 +29,10 @@ pipeline {
             }
         }
 
-        stage('Build'){
+        stage('Test connection'){
             steps {
-                sh 'yarn install'
-                sh 'CI=false yarn build'
+                sh 'curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg'
+                sh 'echo env | grep proxy'
             }
             post {
                 success {
