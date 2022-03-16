@@ -1,5 +1,4 @@
-import dotenv from 'dotenv'
-dotenv.config()
+require("dotenv").config();
 
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
