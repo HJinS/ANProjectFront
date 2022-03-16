@@ -31,8 +31,6 @@ pipeline {
 
         stage('Build'){
             steps {
-                sh 'yarn config delete proxy'
-                sh 'yarn config delete https-proxy'
                 sh 'yarn cache clean'
                 sh 'yarn install --network-timeout 6000000 --production'
                 sh 'CI=false yarn build'
