@@ -31,8 +31,7 @@ pipeline {
 
         stage('Build'){
             steps {
-                sh 'git clean -fdx'
-                sh 'yarn install --network-timeout 6000000 --production'
+                sh 'yarn install --network-timeout 60000000 --production'
                 sh 'CI=false yarn build'
             }
             post {
