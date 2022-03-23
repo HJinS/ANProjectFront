@@ -41,10 +41,7 @@ pipeline {
         }
         stage('Deploy React') {
             steps {
-                withAWS(region: 'ap-northeast-2', credentials: 'JenkinsUser') {
-                    sh 'aws s3 sync ./build s3://anfrontends3'
-                }
-
+                sh 'cp -r /var/lib/jenkins/workspace/ANFrontPipeline/build/* /var/www/build/*'
             }
             post {
                 success {
