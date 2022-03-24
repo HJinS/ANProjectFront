@@ -10,7 +10,7 @@ import DetailMainArea from './components/mainArea/detailMain';
 function Router() {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <CssBaseline/>
       <div style={{height: '100vh'}}>
         <Grid container sx={{height: '100%', width: '100%'}}>
