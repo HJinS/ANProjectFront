@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.tsx", // 번들링 시작 위치
+  entry: "./src/index.ts", // 번들링 시작 위치
   devtool: 'inline-source-map',
   output: {
     path: path.join(__dirname, "/dist"), // 번들 결과물 위치
