@@ -27,8 +27,8 @@ pipeline {
 
         stage('Build'){
             steps {
-                sh 'yarn install --network-timeout 60000000'
-                sh 'yarn build'
+                sh 'npm install'
+                sh 'npm run build'
             }
             post {
                 success {
