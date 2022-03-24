@@ -27,7 +27,7 @@ pipeline {
 
         stage('Build'){
             steps {
-                sh 'yarn install --network-timeout 60000000 --production=false'
+                sh 'yarn install --network-timeout 60000000'
                 sh 'yarn build'
             }
             post {
