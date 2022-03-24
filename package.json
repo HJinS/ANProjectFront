@@ -64,8 +64,4 @@
     "@types/js-cookie": "^3.0.1",
     "@types/jsonwebtoken": "^8.5.8"
   },
-  "main": "index.js",
-  "repository": "https://github.com/HJinS/ANProjectFront.git",
-  "author": "HJinS <windowed@naver.com>",
-  "license": "MIT"
 }
