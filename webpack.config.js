@@ -11,6 +11,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      },
+      {
         test: /[\.js]$/, // .js 에 한하여 babel-loader를 이용하여 transpiling
         exclude: /node_module/,
         use: {
