@@ -9,7 +9,7 @@ import './mainArea.css';
 import axios from "axios";
 import ProductType from "../types/productType";
 import { useSelector } from "react-redux";
-import { RootState } from "../../modules/__reducers";
+import { RootState } from "../../modules/__reducers/reducer_setting";
 import MyCarouselItemLoader from "../loader/carouselLoader";
 import LikeProductType from "../types/likeProductType";
 

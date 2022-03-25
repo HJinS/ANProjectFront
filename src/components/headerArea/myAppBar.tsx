@@ -8,7 +8,7 @@ import StyledInputBase from './search/input';
 import AppBar from './appBar';
 import Box from '@mui/material/Box';
 import { useSelector } from 'react-redux';
-import { RootState } from "../../modules/__reducers";
+import { RootState } from "../../modules/__reducers/reducer_setting";
 import LoginButton from './loginButton';
 import AccountIconButton from './accountIconButton';
 import { Link } from "react-router-dom";

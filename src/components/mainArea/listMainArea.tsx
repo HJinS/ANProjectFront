@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import {LikeListType, ProductListType} from "../types/productListType";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../modules/__reducers";
+import { RootState } from "../../modules/__reducers/reducer_setting";
 import Button from '@mui/material/Button';
 import { initFilter } from "../../modules/__reducers/filterState";
 import useDidMountEffect from "../myHooks/myDidMountEffect";

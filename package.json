@@ -37,10 +37,8 @@
     "yarn-deduplicate": "^3.1.0"
   },
   "scripts": {
-    "start": "webpack serve --open",
-    "build": "webpack",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "webpack-dev-server --open",
+    "build": "webpack --config webpack.config.js"
   },
   "eslintConfig": {
     "extends": [

@@ -24,3 +24,5 @@ yarn-error.log*
 
 todo.txt
 .env
+
+/dist
