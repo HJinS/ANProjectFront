@@ -1,5 +1,7 @@
+const { resolve } = require('path');
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: "./src/index.ts", // 번들링 시작 위치
@@ -57,6 +59,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html", // 템플릿 위치
+      chunks: ['css', 'index']
     }),
   ],
   devServer: {
