@@ -20,9 +20,19 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "outDir": "build",
+    "removeComments": true,
+    "baseUrl": "src"
   },
+  "exclude": [
+    "dist",
+    "build",
+    "node_modules"
+  ],
   "include": [
-    "src"
-  ]
+    "./src/**/**/*",
+    "./public/**/**/*"
+  ],
+  "types": ["material-ui", "react"],
 }

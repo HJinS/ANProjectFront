@@ -8,9 +8,8 @@ import ProductCarousel from './components/mainArea/productCarousel';
 import DetailMainArea from './components/mainArea/detailMain';
 
 function Router() {
-
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter basename="/">
       <CssBaseline/>
       <div style={{height: '100vh'}}>
         <Grid container sx={{height: '100%', width: '100%'}}>

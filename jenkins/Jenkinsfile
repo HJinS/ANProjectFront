@@ -41,7 +41,9 @@ pipeline {
         }
         stage('Deploy React') {
             steps {
+                sh 'sudo rm -rf /var/www/build /var/www/dist'
                 sh 'sudo cp -rf /var/lib/jenkins/workspace/ANFrontPipeline_master/build /var/www/build'
+                sh 'sudo cp -rf /var/lib/jenkins/workspace/ANFrontPipeline_master/dist /var/www/dist'
                 sh 'sudo service nginx restart'
             }
             post {

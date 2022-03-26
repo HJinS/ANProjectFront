@@ -1,70 +1,57 @@
-const { resolve } = require('path');
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const dotenv = require("dotenv");
+dotenv.config();
 
 module.exports = {
-  entry: "./src/index.ts", // 번들링 시작 위치
-  devtool: 'inline-source-map',
+  entry: "./src/index.tsx", // 번들링 시작 위치
+  
   output: {
-    path: path.join(__dirname, "/build"), // 번들 결과물 위치
+    path: path.join(__dirname, './dist'),
     filename: "bundle.js",
+    publicPath: '/'
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+    fallback: {
+      "os": require.resolve("os-browserify/browser"),
+      "path": require.resolve("path-browserify"),
+    }
   },
   module: {
     rules: [
+      // we use babel-loader to load our jsx and tsx files
+      {
+        test: /\.(ts|js)x?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        },
+      },
+      // css-loader to bundle all the css files into one file and style-loader to add all the styles  inside the style tag of the document
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        use: ['style-loader', 'css-loader']
       },
       {
-        test: /[\.js]$/, // .js 에 한하여 babel-loader를 이용하여 transpiling
-        exclude: /node_module/,
-        use: {
-          loader: "babel-loader",
-        },
-      },
-      {
-        test: /\.ts$/, // .ts 에 한하여 ts-loader를 이용하여 transpiling
-        exclude: /node_module/,
-        use: {
-          loader: "ts-loader",
-          options: {
-            compilerOptions: {
-              noEmit: false,
-            },
-          },
-        },
-      },
-      {
-        test: /\.tsx?$/,
-        exclude: /node_module/,
-        use: {
-          loader: "ts-loader",
-          options: {
-            compilerOptions: {
-              noEmit: false,
-            },
-          },
-        },
+        test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
+        exclude: /node_modules/,
+        use: ['file-loader?name=[name].[ext]'] // ?name=[name].[ext] is only necessary to preserve the original file name
       }
-    ],
-  },
-  resolve: {
-    modules: [path.join(__dirname, "src"), "node_modules"], // 모듈 위치
-    extensions: [".ts", ".js", ".tsx", ".css"],
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./public/index.html", // 템플릿 위치
-      chunks: ['css', 'index']
+      template: './public/index.html'
     }),
+    new BundleAnalyzerPlugin(),
+    new webpack.EnvironmentPlugin([
+      "REACT_APP_SERVER_IP",
+    ])
   ],
   devServer: {
-    host: "localhost", // live-server host 및 port
-    port: 5500,
+    historyApiFallback: true,
   },
-  mode: "development",
 };

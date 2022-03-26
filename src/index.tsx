@@ -7,7 +7,6 @@ import rootReducer from './modules/__reducers/reducer_setting';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
-
 const store = createStore(rootReducer);
 
 axios.defaults.withCredentials = true;

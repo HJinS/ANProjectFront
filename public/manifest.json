@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "ANFront",
+  "name": "The front-end UI for AN",
   "icons": [
     {
       "src": "favicon.ico",
