@@ -5,11 +5,14 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const dotenv = require("dotenv");
 dotenv.config();
 const mode = process.env.NODE_ENV || "development"
+if(mode == "production"){
+  dotenv.config({path: path.join(__dirname, '/.env.production')})
+}
 module.exports = {
   entry: "./src/index.tsx", // 번들링 시작 위치
   mode : mode,
   output: {
-    path: path.join(__dirname, './dist'),
+    path: path.join(__dirname, '/dist'),
     filename: "bundle.js",
     publicPath: '/'
   },
