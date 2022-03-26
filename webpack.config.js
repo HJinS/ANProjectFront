@@ -4,10 +4,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const dotenv = require("dotenv");
 dotenv.config();
-
+const mode = process.env.NODE_ENV || "development"
 module.exports = {
   entry: "./src/index.tsx", // 번들링 시작 위치
-  
+  mode : mode,
   output: {
     path: path.join(__dirname, './dist'),
     filename: "bundle.js",
@@ -46,7 +46,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html'
     }),
-    new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin({
+      "analyzerMode": "static"
+    }),
     new webpack.EnvironmentPlugin([
       "REACT_APP_SERVER_IP",
     ])
