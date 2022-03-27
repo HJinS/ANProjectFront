@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin'); 
 const dotenv = require("dotenv");
 dotenv.config();
 const mode = process.env.NODE_ENV || "development"
@@ -10,7 +11,7 @@ module.exports = {
   entry: "./src/index.tsx", // 번들링 시작 위치
   mode : mode,
   output: {
-    path: path.join(__dirname, '/dist'),
+    path: path.join(__dirname, 'dist/'),
     filename: "bundle.js",
     publicPath: '/'
   },
@@ -25,11 +26,24 @@ module.exports = {
     rules: [
       // we use babel-loader to load our jsx and tsx files
       {
-        test: /\.(ts|js)x?$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader'
         },
+      },
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: [
+          'babel-loader',
+          {
+            loader: 'ts-loader',
+            options:  {
+              transpileOnly: true,
+            }
+          }
+        ]
       },
       // css-loader to bundle all the css files into one file and style-loader to add all the styles  inside the style tag of the document
       {
@@ -45,14 +59,15 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html'
+      template: './public/index.html',
     }),
     new BundleAnalyzerPlugin({
       "analyzerMode": "static"
     }),
     new webpack.EnvironmentPlugin([
       "SERVER_IP",
-    ])
+    ]),
+    new ForkTsCheckerWebpackPlugin()
   ],
   devServer: {
     historyApiFallback: true,

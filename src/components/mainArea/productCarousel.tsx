@@ -42,23 +42,41 @@ function ProductCarousel(){
   const [neweggData, setNeweggData] = useState<ProductType[]>([]);
   const [likeData, setLikeData] = useState<LikeProductType[]>([]);
   const login = useSelector((state: RootState) => state.userLoginReducer.userLogin);
-  const [isLoading, setLoading] = useState<boolean>(false);
+  const [isLoadingA, setLoadingA] = useState<boolean>(false);
+  const [isLoadingN, setLoadingN] = useState<boolean>(false);
+  const [isLoadingL, setLoadingL] = useState<boolean>(false);
   const emptyList = [1, 2, 3, 4, 5, 6, 7];
 
-  useEffect(()=>{
-    const getMainData = async () => {
-      setLoading(true)
-      const amazonResponse = await axios.get('/api/product/main/amazon')
-      setAmazonData(amazonResponse.data)
-      const neweggResponse = await axios.get('/api/product/main/newegg')
-      setNeweggData(neweggResponse.data)
-      if(login){
-        const likeResponse = await axios.get('/api/product/main/like')
-        setLikeData(likeResponse.data)
-      }
-      setLoading(false)
+
+  const getAmazon = async (url) => {
+    setLoadingA(true)
+    axios.get(url).then(response => {
+        setAmazonData(response.data)
+        setLoadingA(false)
+        console.log("carousel")
+    }).catch(error => console.log(error))
+  }
+  const getNewegg = async (url) => {
+    setLoadingN(true)
+    axios.get(url).then(response => {
+        setNeweggData(response.data)
+        setLoadingN(false)
+    }).catch(error => console.log(error))
+  }
+  const getLike = async (url) => {
+    if(login){
+      setLoadingL(true)
+      axios.get(url).then(response => {
+        setLikeData(response.data)
+        setLoadingL(false)
+      }).catch(error => console.log(error))
     }
-    getMainData()
+  }
+
+  useEffect(()=>{
+    getAmazon('/api/product/main/amazon')
+    getNewegg('/api/product/main/newegg')
+    getLike('/api/product/main/like')
   }, [])
 
   return(
@@ -81,7 +99,7 @@ function ProductCarousel(){
         renderButtonGroupOutside={true}
         renderDotsOutside={true}>
           { 
-            isLoading == true ? emptyList.map(data => (
+            isLoadingA == true ? emptyList.map(data => (
               <MyCarouselItemLoader key={data}/>
             )) : amazonData.map(data => (
               <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site} id={data.id} like={data.like}/>
@@ -108,7 +126,7 @@ function ProductCarousel(){
         renderButtonGroupOutside={true}
         renderDotsOutside={true}>
           {
-            isLoading == true ? emptyList.map(data => (
+            isLoadingN == true ? emptyList.map(data => (
               <MyCarouselItemLoader key={data}/>
             )) : neweggData.map(data => (
               <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site} id={data.id} like={data.like}/>
@@ -138,7 +156,7 @@ function ProductCarousel(){
         renderButtonGroupOutside={true}
         renderDotsOutside={true}>
           {
-            isLoading == true ? emptyList.map(data => (
+            isLoadingL == true ? emptyList.map(data => (
               <MyCarouselItemLoader key={data}/>
             )) : likeData.map(data => (
               <ProductCarouselItem key={data.products.product_id} name={data.products.name} price={data.price[0].price} img_src={data.products.img_src} category={data.products.category} site={data.products.site} id={data.products.product_id}/>
