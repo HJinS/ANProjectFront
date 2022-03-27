@@ -45,7 +45,7 @@ function ProductCarousel(){
   const [isLoadingA, setLoadingA] = useState<boolean>(false);
   const [isLoadingN, setLoadingN] = useState<boolean>(false);
   const [isLoadingL, setLoadingL] = useState<boolean>(false);
-  const emptyList = [1, 2, 3, 4, 5, 6, 7];
+  const [emptyList, setList] = useState<Array<number>>([1, 2, 3, 4, 5, 6, 7]);
 
 
   const getAmazon = async (url) => {

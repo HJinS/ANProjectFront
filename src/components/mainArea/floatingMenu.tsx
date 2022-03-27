@@ -8,12 +8,12 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import MyButton from "./myButton";
 
 function FloatingMenu() {
-    const category=["intel cpu", "amd cpu",
+    const [category, setCategory] = useState<Array<string>>(["intel cpu", "amd cpu",
                     "radeon gpu", "nvidia gpu",
                     "ddr4 ram", "ddr5 ram",
                     "nvme ssd", "sata ssd",
                     "liquid cpu cooler",
-                    "air cpu cooler"]
+                    "air cpu cooler"])
 
     return (
         <Accordion className="AccordionStyle" square={true}>
