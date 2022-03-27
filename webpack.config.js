@@ -51,7 +51,7 @@ module.exports = {
       "analyzerMode": "static"
     }),
     new webpack.EnvironmentPlugin([
-      "REACT_APP_SERVER_IP",
+      "SERVER_IP",
     ])
   ],
   devServer: {
