@@ -27,3 +27,5 @@ todo.txt
 .env
 
 /dist
+
+/.yarn
