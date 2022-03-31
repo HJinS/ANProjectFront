@@ -61,12 +61,6 @@
     "build": "NODE_ENV=production webpack --progress",
     "buildLocal": "webpack --progress"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
