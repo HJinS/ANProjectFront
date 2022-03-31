@@ -12,6 +12,5 @@ export type LikeListType = {
 export type ProductListComponentType = {
     productResults? : ProductType[]
     likeResults? : LikeProductType[]
-    isLoading: boolean
     isLike: boolean
 }

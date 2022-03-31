@@ -1,6 +1,5 @@
 import React, {Component, useEffect, useState} from "react";
 import { ResponsiveLine } from '@nivo/line'
-import {LineData} from './tmpLineData'
 import ProductType from "../types/productType";
 import { GraphDataType, GraphPriceType } from "../types/graphType";
 
@@ -18,10 +17,13 @@ function MyPriceGraph(props: GraphData){
             [{
                 id: props.data.category,
                 color: "hsl(300, 70%, 50%)",
-                data: priceData.map((data) => (
-                    {x: data.date, y: data.price}
+                data: priceData.map((datum) => (
+                    {x: datum.date, y: datum.price}
                 ))
             }]
+        )
+        return (
+            console.log(graphData)
         )
     }, [])
 

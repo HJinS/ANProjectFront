@@ -3,22 +3,9 @@ import ProductListItem from "./productListItem";
 import ImageList from '@mui/material/ImageList';
 import './mainArea.css';
 import {ProductListComponentType} from "../types/productListType";
-import MyLoader from "../loader/listLoader";
+
 
 function ProductList(listData: ProductListComponentType) {
-  const [empList, setList] = useState<Array<number>>([1, 2, 3, 4, 5, 6, 7]);
-
-  if(listData.isLoading == true){
-    return(
-      <ImageList cols={3} rowHeight={500} className={"ProductListStyle"}>
-        {
-          empList.map((item) => (
-            <MyLoader key={item} />
-          ))
-        }
-      </ImageList>  
-    )
-  }
   return (
     <ImageList cols={3} rowHeight={500} className={"ProductListStyle"}>
       {

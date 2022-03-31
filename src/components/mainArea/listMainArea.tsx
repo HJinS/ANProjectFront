@@ -13,6 +13,8 @@ import Button from '@mui/material/Button';
 import { initFilter } from "../../modules/__reducers/filterState";
 import useDidMountEffect from "../myHooks/myDidMountEffect";
 import LikeProductType from "../types/likeProductType";
+import ImageList from '@mui/material/ImageList';
+import MyLoader from "../loader/listLoader";
 
 function ListMainArea() {
     const params = useParams()
@@ -28,25 +30,29 @@ function ListMainArea() {
     const [likeData, setLikeData] = useState<LikeListType>({results: []});
 
     const [isLoading, setLoading] = useState<boolean>(false);
+    const [empList, setList] = useState<Array<number>>([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
     useEffect(() => {
-        if(Number(listId) === 0){
-            setUri("/api/product/list/amazon")
-        }else if(Number(listId) === 1){
-            setUri("/api/product/list/newegg")
-        }else{
-            setUri("/api/product/list/like")
+        let isMounted = true
+        if(isMounted){
+            if(Number(listId) === 0){
+                setUri("/api/product/list/amazon")
+            }else if(Number(listId) === 1){
+                setUri("/api/product/list/newegg")
+            }else{
+                setUri("/api/product/list/like")
+            }
+        }
+        return ()=>{
+            isMounted = false
         }
     }, [])
 
     const getListData = async () => {
-        setLoading(true)
-        await axios.get(uriLocation).then(response => {
-            Number(listId) === 2 ? setLikeData(response.data) : setData(response.data)
-            setNext(response.data.next)
-            setPrevious(response.data.previous)
-            setLoading(false)
-        }).catch(error => console.log(error))
+        const response = await axios.get(uriLocation)
+        Number(listId) === 2 ? setLikeData(response.data) : setData(response.data)
+        setNext(response.data.next)
+        setPrevious(response.data.previous)
     }
 
     const getListDataPost = async () => {
@@ -55,7 +61,6 @@ function ListMainArea() {
             Number(listId) === 2 ? setLikeData(response.data) : setData(response.data)
             setNext(response.data.next)
             setPrevious(response.data.previous)
-            setLoading(false)
         }).catch(error => console.log(error))
     }
 
@@ -69,8 +74,8 @@ function ListMainArea() {
             Number(listId) === 2 ? setLikeData(response.data) : setData(response.data)
             setNext(response.data.next)
             setPrevious(response.data.previous)
-            setLoading(false)
         }).catch(error => console.log(error))
+        setLoading(false)
     }
 
     const previousPage = async () => {
@@ -79,8 +84,8 @@ function ListMainArea() {
             Number(listId) === 2 ? setLikeData(response.data) : setData(response.data)
             setNext(response.data.next)
             setPrevious(response.data.previous)
-            setLoading(false)
         }).catch(error => console.log(error))
+        setLoading(false)
     }
 
     const filterAction = async () => {
@@ -109,7 +114,16 @@ function ListMainArea() {
                         </Box>
                     </Grid>
                     <Grid item xs={8}>
-                        {Number(listId) === 2 ? <ProductList isLoading={isLoading} likeResults={likeData.results} isLike={true}/> : <ProductList productResults={productData.results} isLoading={isLoading} isLike={false}/>}
+                        {
+                            isLoading == true || (likeData.results.length == 0 && productData.results.length == 0) ? <ImageList cols={3} rowHeight={500} className={"ProductListStyle"}>
+                            {
+                              empList.map((item) => (
+                                <MyLoader key={item} />
+                              ))
+                            }
+                          </ImageList> : 
+                        Number(listId) === 2 ? <ProductList likeResults={likeData.results} isLike={true}/> : <ProductList productResults={productData.results} isLike={false}/>
+                        }
                     </Grid>
                 </Grid>
             </Box>
