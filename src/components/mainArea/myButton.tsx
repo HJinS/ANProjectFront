@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import { Button } from "@mui/material";
 import { ButtonType } from '../types/buttonType';

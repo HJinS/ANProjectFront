@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import ProductListItem from "./productListItem";
 import ImageList from '@mui/material/ImageList';
 import './mainArea.css';

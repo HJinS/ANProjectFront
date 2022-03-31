@@ -45,7 +45,7 @@ function ProductCarousel(){
   const [isLoadingA, setLoadingA] = useState<boolean>(false);
   const [isLoadingN, setLoadingN] = useState<boolean>(false);
   const [isLoadingL, setLoadingL] = useState<boolean>(false);
-  const [emptyList, setList] = useState<Array<number>>([1, 2, 3, 4, 5, 6, 7]);
+  const emptyList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   useEffect(()=>{
     let isMounted = true

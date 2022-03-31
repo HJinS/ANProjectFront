@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { IconButton } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';

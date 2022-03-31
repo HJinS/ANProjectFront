@@ -1,5 +1,3 @@
-import ProductType from "./productType"
-
 type LikeProductType = {
     
     price: priceType[],

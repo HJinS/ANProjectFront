@@ -10,9 +10,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../modules/__reducers/reducer_setting";
 import Button from '@mui/material/Button';
-import { initFilter } from "../../modules/__reducers/filterState";
 import useDidMountEffect from "../myHooks/myDidMountEffect";
-import LikeProductType from "../types/likeProductType";
 import ImageList from '@mui/material/ImageList';
 import MyLoader from "../loader/listLoader";
 
@@ -20,7 +18,6 @@ function ListMainArea() {
     const params = useParams()
     const listId = params.listId
 
-    const setFilter = useDispatch();
     const filter = useSelector((state: RootState) => state.filterReducer)
     const [nextUrl, setNext] = useState<string>("");
     const [previousUrl, setPrevious] = useState<string>("");

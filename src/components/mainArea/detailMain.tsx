@@ -1,5 +1,5 @@
 import React, {Component, useEffect, useState} from "react";
-import { Grid, Box, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import './mainArea.css'
 import MyPriceGraph from "./myPriceGraph";
 import ProductType from "../types/productType";

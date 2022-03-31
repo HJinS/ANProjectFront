@@ -34,5 +34,5 @@
     "./src/**/**/**/*",
     "./public/**/**/*"
   ],
-  "types": ["material-ui", "react"],
+  "types": ["mui", "react"],
 }

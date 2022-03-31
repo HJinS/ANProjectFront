@@ -1,7 +1,7 @@
 import React, {Component, useEffect, useState} from "react";
 import { ResponsiveLine } from '@nivo/line'
 import ProductType from "../types/productType";
-import { GraphDataType, GraphPriceType } from "../types/graphType";
+import { GraphDataType } from "../types/graphType";
 
 type GraphData  = {
     data: ProductType

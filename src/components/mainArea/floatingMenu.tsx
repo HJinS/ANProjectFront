@@ -1,5 +1,5 @@
-import React, {Component, useEffect, useState} from "react";
-import { Grid, Box } from "@mui/material";
+import React, {Component, useState} from "react";
+import { Box } from "@mui/material";
 import './mainArea.css'
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -8,12 +8,12 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import MyButton from "./myButton";
 
 function FloatingMenu() {
-    const [category, setCategory] = useState<Array<string>>(["intel cpu", "amd cpu",
+    const category = ["intel cpu", "amd cpu",
                     "radeon gpu", "nvidia gpu",
                     "ddr4 ram", "ddr5 ram",
                     "nvme ssd", "sata ssd",
                     "liquid cpu cooler",
-                    "air cpu cooler"])
+                    "air cpu cooler"]
 
     return (
         <Accordion className="AccordionStyle" square={true}>
