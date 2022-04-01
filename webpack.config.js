@@ -27,7 +27,6 @@ module.exports = {
       // we use babel-loader to load our jsx and tsx files
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
         use: {
           loader: 'babel-loader'
         },
