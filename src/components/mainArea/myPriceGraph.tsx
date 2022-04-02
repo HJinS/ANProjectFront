@@ -4,7 +4,7 @@ import ProductType from "../types/productType";
 import { GraphDataType } from "../types/graphType";
 
 type GraphData  = {
-    data: ProductType
+    product: ProductType
 }
 
 
@@ -12,10 +12,10 @@ function MyPriceGraph(props: GraphData){
     const [graphData, setData] = useState<GraphDataType[]>([])
 
     useEffect(() => {
-        const priceData = props.data.price
+        const priceData = props.product.price
         setData(
             [{
-                id: props.data.category,
+                id: props.product.category,
                 color: "hsl(300, 70%, 50%)",
                 data: priceData.map((datum) => (
                     {x: datum.date, y: datum.price}

@@ -2,7 +2,6 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin'); 
 const dotenv = require("dotenv");
 dotenv.config();
 const mode = process.env.NODE_ENV || "development"
@@ -16,17 +15,23 @@ module.exports = {
     publicPath: '/'
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['.ts', '.tsx', '.js', 'css'],
     fallback: {
       "os": require.resolve("os-browserify/browser"),
       "path": require.resolve("path-browserify"),
+      "console": require.resolve('console-browserify'),
+      "constants": require.resolve('constants-browserify'),
+      "http": require.resolve('stream-http'),
+      "https": require.resolve('https-browserify'),
+      "process": require.resolve('process/browser'),
+      "url": require.resolve('url'),
     }
   },
   module: {
     rules: [
       // we use babel-loader to load our jsx and tsx files
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)$/,
         use: {
           loader: 'babel-loader'
         },
@@ -58,6 +63,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      inject: false,
       template: './public/index.html',
     }),
     new BundleAnalyzerPlugin({
@@ -65,8 +71,7 @@ module.exports = {
     }),
     new webpack.EnvironmentPlugin([
       "SERVER_IP",
-    ]),
-    new ForkTsCheckerWebpackPlugin()
+    ])
   ],
   devServer: {
     historyApiFallback: true,

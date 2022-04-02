@@ -27,7 +27,7 @@ function ListMainArea() {
     const [likeData, setLikeData] = useState<LikeListType>({results: []});
 
     const [isLoading, setLoading] = useState<boolean>(false);
-    const [empList, setList] = useState<Array<number>>([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    const [empList, setList] = useState<Array<number>>([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ,12]);
 
     useEffect(() => {
         let isMounted = true
@@ -62,7 +62,13 @@ function ListMainArea() {
     }
 
     useDidMountEffect(() => {
-        getListData()
+        let isMounted = true
+        if(isMounted){
+            getListData()
+        }
+        return ()=>{
+            isMounted = false
+        }
     }, [uriLocation])
 
     const nextPage = async () => {

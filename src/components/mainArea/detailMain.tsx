@@ -41,7 +41,7 @@ function DetailMainArea() {
           <Box className={"DetailMainGraphArea"}>
             {
               detailData === undefined ? <></> :
-              <MyPriceGraph data={detailData}/>
+              <MyPriceGraph product={detailData}/>
             }
           </Box>
           <Box className={"DetailMainInfoArea"}>
