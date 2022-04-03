@@ -5,7 +5,6 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const dotenv = require("dotenv");
 dotenv.config();
 const mode = process.env.NODE_ENV || "development"
-console.log(process.env.SERVER_IP)
 module.exports = {
   entry: "./src/index.tsx", // 번들링 시작 위치
   mode : mode,
@@ -78,5 +77,13 @@ module.exports = {
     historyApiFallback: true,
     port: 3000,
     host: 'localhost',
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8000',
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
   }
 };
