@@ -50,6 +50,7 @@ function ListMainArea() {
         axios.get(uriLocation).then(response => {
             console.log(response.data)
             console.log(response.data.results)
+            console.log(response.request)
             if(response.status === 200){
                 if(Number(listId) === 2){
                     const responseData: LikeProductType[] = response.data.results
