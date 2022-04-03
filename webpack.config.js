@@ -3,7 +3,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const dotenv = require("dotenv");
-
+dotenv.config();
 const mode = process.env.NODE_ENV || "development"
 console.log(process.env.SERVER_IP)
 module.exports = {
@@ -72,14 +72,11 @@ module.exports = {
     }),
     new webpack.EnvironmentPlugin([
       "SERVER_IP",
-    ]),
-    new dotenv({
-      path: './.env'
-    })
+    ])
   ],
   devServer: {
     historyApiFallback: true,
     port: 3000,
-    host: 'localhost'
+    host: 'localhost',
   }
 };
