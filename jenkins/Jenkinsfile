@@ -28,7 +28,7 @@ pipeline {
         stage('Build'){
             steps {
                 sh 'yarn install'
-                sh 'yarn build'
+                sh 'yarn buildLocal'
             }
             post {
                 success {
