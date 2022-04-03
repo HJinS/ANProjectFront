@@ -83,13 +83,6 @@ function ProductCarousel(){
 
     return ()=>{
       isMounted = false
-      console.log(amazonData)
-      console.log(amazonData.length)
-      console.log(neweggData)
-      console.log(neweggData.length)
-      console.log("is_loading", isLoadingN === true)
-      console.log("length", neweggData.length === 0)
-      console.log(isLoadingA === true || amazonData.length === 0)
     }
   }, [])
 
@@ -113,7 +106,7 @@ function ProductCarousel(){
         renderButtonGroupOutside={true}
         renderDotsOutside={true}>
           { 
-            isLoadingA === true || amazonData.length === 0 ? emptyList.map(data => (
+            (isLoadingA === true || amazonData.length === 0) ? emptyList.map(data => (
               <MyCarouselItemLoader key={data}/>
             )) : amazonData.map(data => (
               <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site} id={data.id} like={data.like}/>
@@ -140,7 +133,7 @@ function ProductCarousel(){
         renderButtonGroupOutside={true}
         renderDotsOutside={true}>
           {
-            isLoadingN === true || neweggData.length === 0 ? emptyList.map(data => (
+            (isLoadingN === true || neweggData.length === 0) ? emptyList.map(data => (
               <MyCarouselItemLoader key={data}/>
             )) : neweggData.map(data => (
               <ProductCarouselItem key={data.id} name={data.name} price={data.price[0].price} img_src={data.img_src} category={data.category} site={data.site} id={data.id} like={data.like}/>
@@ -170,7 +163,7 @@ function ProductCarousel(){
         renderButtonGroupOutside={true}
         renderDotsOutside={true}>
           {
-            isLoadingL === true || likeData.length === 0 ? emptyList.map(data => (
+            (isLoadingL === true || likeData.length === 0) ? emptyList.map(data => (
               <MyCarouselItemLoader key={data}/>
             )) : likeData.map(data => (
               <ProductCarouselItem key={data.products.product_id} name={data.products.name} price={data.price[0].price} img_src={data.products.img_src} category={data.products.category} site={data.products.site} id={data.products.product_id}/>
