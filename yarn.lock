@@ -8329,7 +8329,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"http-proxy-middleware@npm:^2.0.0":
+"http-proxy-middleware@npm:^2.0.0, http-proxy-middleware@npm:^2.0.4":
   version: 2.0.4
   resolution: "http-proxy-middleware@npm:2.0.4"
   dependencies:
@@ -12186,6 +12186,7 @@ __metadata:
     css-loader: ^6.7.1
     dotenv: ^16.0.0
     html-webpack-plugin: ^5.5.0
+    http-proxy-middleware: ^2.0.4
     react: ^18.1.0-next-ebd7ff65b-20220401
     react-content-loader: ^6.2.0
     react-dom: ^18.1.0-next-ebd7ff65b-20220401
