@@ -49,17 +49,21 @@ function ListMainArea() {
 
     const getListData = async () => {
         const response = await axios.get(uriLocation)
-        Number(listId) === 2 ? setLikeData(response.data) : setData(response.data)
-        setNext(response.data.next)
-        setPrevious(response.data.previous)
+        if(response.data.length !== 0){
+            Number(listId) === 2 ? setLikeData(response.data) : setData(response.data)
+            setNext(response.data.next)
+            setPrevious(response.data.previous)
+        }
     }
 
     const getListDataPost = async () => {
         setLoading(true)
         axios.post(uriLocation, {"filter": filter}).then(response => {
-            Number(listId) === 2 ? setLikeData(response.data) : setData(response.data)
-            setNext(response.data.next)
-            setPrevious(response.data.previous)
+            if(response.data.length !== 0){
+                Number(listId) === 2 ? setLikeData(response.data) : setData(response.data)
+                setNext(response.data.next)
+                setPrevious(response.data.previous)
+            }
         }).catch(error => console.log(error))
     }
 

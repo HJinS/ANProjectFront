@@ -54,15 +54,17 @@ function ProductCarousel(){
       const AmazonData = await axios.get(url)
       if(isMounted){
         setLoadingA(true)
-        setAmazonData(AmazonData.data)
+        if(AmazonData.data.length !== 0)
+          setAmazonData(AmazonData.data)
         setLoadingA(false)
       }
     }
     const getNewegg = async (url:string) => {
-      const Neweggdata = await axios.get(url)
+      const NeweggData = await axios.get(url)
       if(isMounted){
         setLoadingN(true)
-        setNeweggData(Neweggdata.data)
+        if(NeweggData.data.length !== 0)
+          setNeweggData(NeweggData.data)
         setLoadingN(false)
       }
     }
@@ -70,7 +72,8 @@ function ProductCarousel(){
         const LikeData = await axios.get(url)
         if(isMounted){
           setLoadingL(true)
-          setLikeData(LikeData.data)
+          if(LikeData.data.length !== 0)
+            setLikeData(LikeData.data)
           setLoadingL(false)
         }
     }
