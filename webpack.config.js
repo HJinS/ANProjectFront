@@ -25,6 +25,7 @@ module.exports = {
       "https": require.resolve('https-browserify'),
       "process": require.resolve('process/browser'),
       "url": require.resolve('url'),
+      "events": require.resolve('events'),
     }
   },
   module: {

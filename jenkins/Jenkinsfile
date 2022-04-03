@@ -43,8 +43,8 @@ pipeline {
             steps {
                 sh 'sudo rm -rf /var/www/dist'
                 sh 'sudo cp -rf /var/lib/jenkins/workspace/ANFrontPipeline_master/dist /var/www/dist'
-                sh 'sudo service nginx restart'
                 sh 'sudo systemctl reload nginx'
+                sh 'sudo service nginx restart'
             }
             post {
                 success {
