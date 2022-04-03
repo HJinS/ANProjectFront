@@ -42,6 +42,8 @@ function ListMainArea() {
         }
         return ()=>{
             isMounted = false
+            console.log("likeData", likeData)
+            console.log("productData", productData)
         }
     }, [])
 
@@ -68,7 +70,6 @@ function ListMainArea() {
         }
         return ()=>{
             isMounted = false
-            console.log(likeData)
         }
     }, [uriLocation])
 
@@ -119,7 +120,7 @@ function ListMainArea() {
                     </Grid>
                     <Grid item xs={8}>
                         {
-                            isLoading === true || (likeData.results.length === 0 && productData.results.length === 0) ? <ImageList cols={3} rowHeight={500} className={"ProductListStyle"}>
+                            isLoading == true || (likeData.results.length == 0 && productData.results.length == 0) ? <ImageList cols={3} rowHeight={500} className={"ProductListStyle"}>
                             {
                               empList.map((item) => (
                                 <MyLoader key={item} />
