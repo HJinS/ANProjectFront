@@ -43,17 +43,15 @@ function ListMainArea() {
         }
         return ()=>{
             isMounted = false
-            console.log("likeData", likeData)
-            console.log("productData", productData)
         }
     }, [])
 
     const getListData = async () => {
         axios.get(uriLocation).then(response => {
+            console.log(response.data)
+            console.log(response.data.results)
             if(response.status === 200){
                 if(Number(listId) === 2){
-                    console.log(response.data)
-                    console.log(response.data.results)
                     const responseData: LikeProductType[] = response.data.results
                     if(responseData.length > 0){
                         setLikeData(responseData)
