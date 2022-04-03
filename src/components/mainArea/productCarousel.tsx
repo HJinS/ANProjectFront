@@ -83,6 +83,8 @@ function ProductCarousel(){
 
     return ()=>{
       isMounted = false
+      console.log(amazonData)
+      console.log(neweggData)
     }
   }, [])
 
