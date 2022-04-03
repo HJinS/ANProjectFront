@@ -48,14 +48,13 @@ function ListMainArea() {
     }, [])
 
     const getListData = async () => {
-        const response = await axios.get(uriLocation)
-        console.log(response.data)
-        console.log(uriLocation)
-        if(response.data.results.length !== 0){
-            Number(listId) === 2 ? setLikeData(response.data) : setData(response.data)
-            setNext(response.data.next)
-            setPrevious(response.data.previous)
-        }
+        axios.get(uriLocation).then(response => {
+            if(response.data.results.length !== 0){
+                Number(listId) === 2 ? setLikeData(response.data) : setData(response.data)
+                setNext(response.data.next)
+                setPrevious(response.data.previous)
+            }
+        })
     }
 
     const getListDataPost = async () => {
