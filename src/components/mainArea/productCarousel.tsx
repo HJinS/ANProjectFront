@@ -89,6 +89,7 @@ function ProductCarousel(){
       console.log(neweggData.length)
       console.log("is_loading", isLoadingN === true)
       console.log("length", neweggData.length === 0)
+      console.log(isLoadingA === true || amazonData.length === 0)
     }
   }, [])
 
