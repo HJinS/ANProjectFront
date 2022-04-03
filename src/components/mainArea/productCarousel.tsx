@@ -55,7 +55,7 @@ function ProductCarousel(){
       const AmazonData: ProductType[] = Array(response.data)
       if(isMounted){
         setLoadingA(true)
-        if(AmazonData.length !== 0)
+        if(AmazonData.length > 0)
           setAmazonData(AmazonData)
         setLoadingA(false)
       }
@@ -65,7 +65,7 @@ function ProductCarousel(){
       const NeweggData: ProductType[] = Array(response.data)
       if(isMounted){
         setLoadingN(true)
-        if(NeweggData.length !== 0)
+        if(NeweggData.length > 0)
           setNeweggData(NeweggData)
         setLoadingN(false)
       }
@@ -75,7 +75,7 @@ function ProductCarousel(){
         const LikeData: LikeProductType[] = Array(response.data)
         if(isMounted){
           setLoadingL(true)
-          if(LikeData.length !== 0)
+          if(LikeData.length > 0)
             setLikeData(LikeData)
           setLoadingL(false)
         }

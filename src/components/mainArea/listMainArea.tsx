@@ -5,7 +5,8 @@ import MyPagination from './myPagination';
 import FloatingMenu from "./floatingMenu";
 import ProductList from "./productList";
 import { useParams } from "react-router-dom";
-import {LikeListType, ProductListType} from "../types/productListType";
+import LikeProductType from "../types/likeProductType";
+import ProductType from "../types/productType";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../modules/__reducers/reducer_setting";
@@ -23,8 +24,8 @@ function ListMainArea() {
     const [previousUrl, setPrevious] = useState<string>("");
     const [uriLocation, setUri] = useState<string>("");
 
-    const [productData, setData] = useState<ProductListType>({results: []});
-    const [likeData, setLikeData] = useState<LikeListType>({results: []});
+    const [productData, setData] = useState<ProductType[]>([]);
+    const [likeData, setLikeData] = useState<LikeProductType[]>([]);
 
     const [isLoading, setLoading] = useState<boolean>(false);
     const [empList, setList] = useState<Array<number>>([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ,12]);
@@ -49,10 +50,22 @@ function ListMainArea() {
 
     const getListData = async () => {
         axios.get(uriLocation).then(response => {
-            if(response.data.results.length !== 0){
-                Number(listId) === 2 ? setLikeData(response.data) : setData(response.data)
-                setNext(response.data.next)
-                setPrevious(response.data.previous)
+            if(response.status === 200){
+                if(Number(listId) === 2){
+                    const responseData: LikeProductType[] = response.data.results
+                    if(responseData.length > 0){
+                        setLikeData(responseData)
+                        setNext(response.data.next)
+                        setPrevious(response.data.previous)
+                    }
+                }else{
+                    const responseData: ProductType[] = response.data.results
+                    if(responseData.length > 0){
+                        setData(responseData)
+                        setNext(response.data.next)
+                        setPrevious(response.data.previous)
+                    }
+                }
             }
         })
     }
@@ -60,10 +73,22 @@ function ListMainArea() {
     const getListDataPost = async () => {
         setLoading(true)
         axios.post(uriLocation, {"filter": filter}).then(response => {
-            if(response.data.results.length !== 0){
-                Number(listId) === 2 ? setLikeData(response.data) : setData(response.data)
-                setNext(response.data.next)
-                setPrevious(response.data.previous)
+            if(response.status === 200){
+                if(Number(listId) === 2){
+                    const responseData: LikeProductType[] = response.data.results
+                    if(responseData.length > 0){
+                        setLikeData(responseData)
+                        setNext(response.data.next)
+                        setPrevious(response.data.previous)
+                    }
+                }else{
+                    const responseData: ProductType[] = response.data.results
+                    if(responseData.length > 0){
+                        setData(responseData)
+                        setNext(response.data.next)
+                        setPrevious(response.data.previous)
+                    }
+                }
             }
         }).catch(error => console.log(error))
     }
@@ -81,9 +106,23 @@ function ListMainArea() {
     const nextPage = async () => {
         setLoading(true)
         axios.get(nextUrl).then(response => {
-            Number(listId) === 2 ? setLikeData(response.data) : setData(response.data)
-            setNext(response.data.next)
-            setPrevious(response.data.previous)
+            if(response.status === 200){
+                if(Number(listId) === 2){
+                    const responseData: LikeProductType[] = response.data.results
+                    if(responseData.length > 0){
+                        setLikeData(responseData)
+                        setNext(response.data.next)
+                        setPrevious(response.data.previous)
+                    }
+                }else{
+                    const responseData: ProductType[] = response.data.results
+                    if(responseData.length > 0){
+                        setData(responseData)
+                        setNext(response.data.next)
+                        setPrevious(response.data.previous)
+                    }
+                }
+            }
         }).catch(error => console.log(error))
         setLoading(false)
     }
@@ -91,9 +130,24 @@ function ListMainArea() {
     const previousPage = async () => {
         setLoading(true)
         axios.get(previousUrl).then(response => {
-            Number(listId) === 2 ? setLikeData(response.data) : setData(response.data)
-            setNext(response.data.next)
-            setPrevious(response.data.previous)
+
+            if(response.status === 200){
+                if(Number(listId) === 2){
+                    const responseData: LikeProductType[] = response.data.results
+                    if(responseData.length > 0){
+                        setLikeData(responseData)
+                        setNext(response.data.next)
+                        setPrevious(response.data.previous)
+                    }
+                }else{
+                    const responseData: ProductType[] = response.data.results
+                    if(responseData.length > 0){
+                        setData(responseData)
+                        setNext(response.data.next)
+                        setPrevious(response.data.previous)
+                    }
+                }
+            }
         }).catch(error => console.log(error))
         setLoading(false)
     }
@@ -125,14 +179,14 @@ function ListMainArea() {
                     </Grid>
                     <Grid item xs={8}>
                         {
-                            isLoading == true || (likeData.results.length == 0 && productData.results.length == 0) ? <ImageList cols={3} rowHeight={500} className={"ProductListStyle"}>
+                            isLoading === true || (likeData.length === 0 && productData.length === 0) ? <ImageList cols={3} rowHeight={500} className={"ProductListStyle"}>
                             {
                               empList.map((item) => (
                                 <MyLoader key={item} />
                               ))
                             }
                           </ImageList> : 
-                        Number(listId) === 2 ? <ProductList likeResults={likeData.results} isLike={true}/> : <ProductList productResults={productData.results} isLike={false}/>
+                        Number(listId) === 2 ? <ProductList likeResults={likeData} isLike={true}/> : <ProductList productResults={productData} isLike={false}/>
                         }
                     </Grid>
                 </Grid>
