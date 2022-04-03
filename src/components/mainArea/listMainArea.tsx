@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import LikeProductType from "../types/likeProductType";
 import ProductType from "../types/productType";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../modules/__reducers/reducer_setting";
 import Button from '@mui/material/Button';
 import useDidMountEffect from "../myHooks/myDidMountEffect";
@@ -52,6 +52,8 @@ function ListMainArea() {
         axios.get(uriLocation).then(response => {
             if(response.status === 200){
                 if(Number(listId) === 2){
+                    console.log(response.data)
+                    console.log(response.data.results)
                     const responseData: LikeProductType[] = response.data.results
                     if(responseData.length > 0){
                         setLikeData(responseData)
