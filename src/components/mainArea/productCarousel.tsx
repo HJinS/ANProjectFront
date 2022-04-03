@@ -52,7 +52,7 @@ function ProductCarousel(){
 
     const getAmazon = async (url:string) => {
       const response = await axios.get(url)
-      const AmazonData: ProductType[] = response.data
+      const AmazonData: ProductType[] = Array(response.data)
       if(isMounted){
         setLoadingA(true)
         if(AmazonData.length !== 0)
@@ -62,7 +62,7 @@ function ProductCarousel(){
     }
     const getNewegg = async (url:string) => {
       const response = await axios.get(url)
-      const NeweggData: ProductType[] = response.data
+      const NeweggData: ProductType[] = Array(response.data)
       if(isMounted){
         setLoadingN(true)
         if(NeweggData.length !== 0)
@@ -72,7 +72,7 @@ function ProductCarousel(){
     }
     const getLike = async (url:string) => {
         const response = await axios.get(url)
-        const LikeData: LikeProductType[] = response.data
+        const LikeData: LikeProductType[] = Array(response.data)
         if(isMounted){
           setLoadingL(true)
           if(LikeData.length !== 0)
