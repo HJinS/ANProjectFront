@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nginx
+    container_name: nginx-container
+    volumes:
+      - /var/lib/jenkins/workspace/ANFrontPipeline_master/dist:/var/www/dist
+      - /var/lib/jenkins/workspace/ANPipeline_master/static_in_env:/an/static
+    privileged: true
+    ports:
+      - "80:80"
+    expose:
+      - "80"
