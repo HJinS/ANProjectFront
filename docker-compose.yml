@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: nginx
-    container_name: nginx-container
+    container_name: nginx-front-container
     volumes:
       - /var/lib/jenkins/workspace/ANFrontPipeline_master/dist:/var/www/dist
       - /var/lib/jenkins/workspace/ANPipeline_master/static_in_env:/an/static
