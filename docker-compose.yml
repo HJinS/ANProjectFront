@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  nginx:
+  nginx-front:
     build:
       context: .
       dockerfile: Dockerfile
