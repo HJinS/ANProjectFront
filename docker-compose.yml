@@ -15,6 +15,4 @@ services:
     expose:
       - "80"
     links:
-      - AN
-    depends_on:
-      - AN
+      - an-container
