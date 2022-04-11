@@ -14,4 +14,5 @@ services:
     volumes:
       - /var/lib/jenkins/workspace/ANFrontPipeline_master/dist:/var/www/dist
       - /var/lib/jenkins/workspace/ANPipeline_master/static_in_env:/an/static
-    network_mode: "container:an-container"
+    external_links:
+      - an-container
