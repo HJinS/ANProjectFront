@@ -16,3 +16,8 @@ services:
       - /var/lib/jenkins/workspace/ANPipeline_master/static_in_env:/an/static
     external_links:
       - an-container
+
+networks:
+  default:
+    external:
+      name: an_network
