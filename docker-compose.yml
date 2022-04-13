@@ -20,4 +20,4 @@ services:
 networks:
   default:
     external:
-      name: an_network
+      name:  anpipeline_master_an_network
