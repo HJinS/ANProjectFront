@@ -1,5 +1,4 @@
 upstream AN {
-    ip_hash;
     server an-container:5000;
 }
 
