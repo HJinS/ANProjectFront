@@ -1,5 +1,5 @@
 upstream AN {
-    server an-container:5000;
+    server AN:5000;
 }
 
 server {
