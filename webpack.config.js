@@ -69,6 +69,9 @@ module.exports = {
     new BundleAnalyzerPlugin({
       "analyzerMode": "static"
     }),
+    new webpack.DefinePlugin({
+      'process.env.SERVER_IP': JSON.stringify(process.env.SERVER_IP),
+    }),
     new webpack.EnvironmentPlugin([
       "SERVER_IP",
     ])
