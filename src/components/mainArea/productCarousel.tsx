@@ -81,10 +81,10 @@ function ProductCarousel(){
         }
     }
 
-    getAmazon('/api/product/main/amazon')
-    getNewegg('/api/product/main/newegg')
+    getAmazon('/product/main/amazon')
+    getNewegg('/product/main/newegg')
     if(login){
-      getLike('/api/product/main/like')
+      getLike('/product/main/like')
     }
 
     return ()=>{

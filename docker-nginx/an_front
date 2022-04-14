@@ -1,21 +1,8 @@
-upstream AN {
-    server AN:5000;
-}
-
 server {
     listen 80;
     location / {
         root /var/www/dist;
         index index.html index.htm;
         try_files $uri $uri/ /index.html;
-    }
-
-    location /api/ {
-        include proxy_params;
-        proxy_pass http://AN/;
-    }
-
-    location /static/ {
-        alias /an/static/;
     }
 }

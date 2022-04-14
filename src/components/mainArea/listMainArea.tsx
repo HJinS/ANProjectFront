@@ -34,11 +34,11 @@ function ListMainArea() {
         let isMounted = true
         if(isMounted){
             if(Number(listId) === 0){
-                setUri("/api/product/list/amazon")
+                setUri("/product/list/amazon")
             }else if(Number(listId) === 1){
-                setUri("/api/product/list/newegg")
+                setUri("/product/list/newegg")
             }else{
-                setUri("/api/product/list/like")
+                setUri("/product/list/like")
             }
         }
         return ()=>{

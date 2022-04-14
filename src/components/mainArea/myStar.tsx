@@ -10,7 +10,7 @@ function MyStar(props: starInfoType) {
 
     const [like, setLike] = useState(props.on);
     const [clickCount, setCount] = useState(0);
-    const uri = props.on ? '/api/product/like/delete' : '/api/product/like/add'
+    const uri = props.on ? '/product/like/delete' : '/product/like/add'
 
     const likeClick = () => {
         setLike(like === true ? false : true)

@@ -15,7 +15,7 @@ function DetailMainArea() {
   const [siteInfo, setSite] = useState("")
   useEffect(() => {
     const getDetailData = async () => {
-      const response = await axios.post("/api/product/detail", {"product_id": product_id})
+      const response = await axios.post("/product/detail", {"product_id": product_id})
       setDetailData(response.data)        
     }
     getDetailData()
