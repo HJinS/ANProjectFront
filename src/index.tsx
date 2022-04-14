@@ -8,7 +8,6 @@ import { createRoot } from 'react-dom/client';
 
 const store = createStore(rootReducer);
 
-axios.defaults.withCredentials = true;
 axios.defaults.baseURL = 'http://3.39.71.147:8000';
 const rootElement = document.getElementById('root')
 if(!rootElement) throw new Error('Failed to find the root element');

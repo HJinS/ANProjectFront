@@ -76,14 +76,4 @@ module.exports = {
       "SERVER_IP",
     ])
   ],
-  devServer: {
-    historyApiFallback: true,
-    port: 3000,
-    host: 'localhost',
-    proxy: {
-      '/': {
-        target: 'http://localhost:8000',
-      }
-    }
-  }
 };
