@@ -8,15 +8,6 @@ import { login, logout } from "../../modules/__reducers/userLoginState";
 
 const JWT_EXPIRY_TIME = 24 * 3600 * 1000;
 
-function requestLogin(){
-    console.log("Login Button Clicked")
-
-    axios.get('/social/google/login')
-        .then(onLoginSuccess).catch(error => {
-            console.log(error.response)
-        })
-}
-
 function onSilentRefresh(){
     const dispatch = useDispatch();
     axios.get('/social/token/refresh')
@@ -36,13 +27,17 @@ function onLoginSuccess(response: AxiosResponse){
 
 
 function LoginButton(){
-      return(
-        <Button className={"LoginButtonStyle"} onClick={requestLogin}>
+    const client_id = process.env.REACT_APP_OAUTH_CLIENT_ID
+    const callback_uri = process.env.REACT_APP_OAUTH_CALLBACK_URI
+    const scope = "https://www.googleapis.com/auth/userinfo.email"
+    const url = `https://accounts.google.com/o/oauth2/auth?client_id=${client_id}&response_type=code&redirect_uri=${callback_uri}&scope=${scope}`
+    return(
+        <Button className={"LoginButtonStyle"} href={url}>
             <Typography variant = 'caption' color="black">
                 <GoogleIcon />
             </Typography>
         </Button>
-      );
+    );
 }
 
 export default LoginButton;
