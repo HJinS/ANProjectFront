@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import SearchIcon from '@mui/icons-material/Search';
@@ -7,12 +7,14 @@ import SearchIconWrapper from './search/searchIcon';
 import StyledInputBase from './search/input';
 import AppBar from './appBar';
 import Box from '@mui/material/Box';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from "../../modules/__reducers/reducer_setting";
 import LoginButton from './loginButton';
 import AccountIconButton from './accountIconButton';
 import { Link } from "react-router-dom";
 import "./header.css";
+import { useNavigate } from 'react-router-dom';
+import { setSearch } from '../../modules/__reducers/searchState';
 
 interface ImyAppBar{
     menuId: string,
@@ -22,7 +24,9 @@ interface ImyAppBar{
 
 function MyAppBar(props: ImyAppBar){
     const login = useSelector((state: RootState) => state.userLoginReducer.userLogin);
-
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    
     return(
         <AppBar position="fixed">
             <Toolbar>
@@ -44,6 +48,12 @@ function MyAppBar(props: ImyAppBar){
                     <StyledInputBase
                     placeholder="Search…"
                     inputProps={{ 'aria-label': 'search'}}
+                    onChange={(newInput)=>dispatch(setSearch(newInput.target.value))}
+                    onKeyDown={(e)=>{
+                        if(e.key === "Enter"){
+                            navigate('/search')
+                        }
+                    }}
                     />
                 </Search>
                 <Box sx={{ display: { xs: 'none', md: 'flex' } }}>

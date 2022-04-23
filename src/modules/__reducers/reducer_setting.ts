@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import userLoginReducer from './userLoginState';
 import filterReducer from './filterState';
+import searchReducer from './searchState';
 
 const rootReducer = combineReducers({
     userLoginReducer,
-    filterReducer
+    filterReducer,
+    searchReducer
 });
 
 export default rootReducer;

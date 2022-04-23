@@ -6,6 +6,7 @@ import HeaderArea from './components/headerArea/header';
 import ListMainArea from './components/mainArea/listMainArea';
 import ProductCarousel from './components/mainArea/productCarousel';
 import DetailMainArea from './components/mainArea/detailMain';
+import SearchResult from './components/mainArea/searchResult';
 
 function Router() {
   return (
@@ -21,6 +22,7 @@ function Router() {
               <Route path='/' element={<ProductCarousel/>} />
               <Route path='/list/:listId' element={<ListMainArea />} />
               <Route path='/detail:product_id' element={<DetailMainArea />} />
+              <Route path='/search' element={<SearchResult />} />
             </Routes>
           </Grid>
         </Grid>
