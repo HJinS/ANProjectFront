@@ -12,6 +12,8 @@ pipeline {
                 script {
                     withAWS(region: 'ap-northeast-2', credentials: 'JenkinsUser'){
                         env.SERVER_IP = sh(script: "aws ssm get-parameters --name /front/SERVER_IP | jq -j '.Parameters[0].Value'", returnStdout: true)
+                        env.REACT_APP_OAUTH_CLIENT_ID = sh(script: "aws ssm get-parameters --name /GOOGLE_OAUTH2_CLIENT_ID | jq -j '.Parameters[0].Value'", returnStdout: true)
+                        env.REACT_APP_OAUTH_CALLBACK_URI = sh(script: "aws ssm get-parameters --name /GOOGLE_OAUTH2_CALLBACK_URI | jq -j '.Parameters[0].Value'", returnStdout: true)
                     }
                 }
             }
